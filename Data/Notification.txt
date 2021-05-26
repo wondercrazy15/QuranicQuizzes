@@ -1,0 +1,29 @@
+ public static String SendNotificationFromFirebaseCloud(string title,String body)
+    {
+
+        var token = UserId;//In which user you have to send notification his ID
+        var result = "-1";//If notification not send
+        var webAddr = "https://fcm.googleapis.com/fcm/send";
+        var ServerKey="AAAAsf2oS6k:APA91bGQAnWIt8NzCQqKFx_X15Dm0eGWps6nPB6y50x2M4ISubKFuotnL8ccz5SyjHURADgxhgM9O0oHSSIzpkTzmYLDZdlT2pP6Jy0rsdnv4OvT0NrGxpT6uvyU4kHQyjqcfNWzrhIf";
+        var httpWebRequest = (HttpWebRequest)WebRequest.Create(webAddr);
+        httpWebRequest.ContentType = "application/json";
+        httpWebRequest.Headers.Add(HttpRequestHeader.Authorization, ServerKey);
+        httpWebRequest.Method = "POST";
+        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+        {
+            string strNJson = "{\"to\": \"/topics/" + token + "\",\"notification\" : {\"body\" : \"" + "New Assignment is Given by teacher" + "\",\"priority\" : \"high\",\"title\" : \"" +"New Assignment" + "\"}, \"data\": {    \"New Assignment\" : \"" + Assignment_Information + "\"}}";
+            streamWriter.Write(strNJson);
+            streamWriter.Flush();
+        }
+
+        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+        {
+            result = streamReader.ReadToEnd();
+        }
+        return result;
+    }
+
+
+Reference Link
+=>https://www.c-sharpcorner.com/blogs/push-notification-using-firebase-cloud-messaging-using-net

@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="QuranicQuizzes.Views.QuizzesByCoursesPage">
+   <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Courses" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIconButton TintColor="White" Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="30"  PressedBackgroundColor="Transparent"  />
+            <!--<material:MaterialIconButton TintColor="White" Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="50"  PressedBackgroundColor="Transparent" Command="{Binding iconSearchTap}" Image="search.png" />-->
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="splash" Aspect="AspectFill"></Image>
+            </Grid>
+            <Grid >
+        <StackLayout>
+            <StackLayout Orientation="Vertical" BackgroundColor="#3E4349" Padding="0,0,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" >
+
+                <Frame Margin="10,5,10,5" CornerRadius="2" IsVisible="{Binding IsVisibleSearch}" BackgroundColor="#DCDCDC" Padding="0">
+                    <StackLayout Orientation="Horizontal" >
+                        <Entry Margin="10,0,0,0" Text="{Binding SearchData}"  Placeholder="Search here.." FontFamily="{StaticResource QuranFont}" HorizontalOptions="FillAndExpand" />
+                        <material:MaterialIconButton PressedBackgroundColor="Transparent" BackgroundColor="Transparent" Margin="0,0,10,0" Command="{Binding iconCloseTap}" Image="close.png" TintColor="Black" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <ListView x:Name="EntryList"
+                      VerticalScrollBarVisibility="Never"
+                      ios:ListView.RowAnimationsEnabled="false"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      SelectionMode="None"
+                      BackgroundColor="Transparent"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding Quizzescategory}"
+                      SeparatorVisibility="None" >
+                <ListView.Behaviors>
+                    <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                           <StackLayout
+                                x:Name="ListViewselection"
+                                Padding="0,0,0,5"
+                                         Orientation="Vertical">
+                                <material:MaterialCard CornerRadius="0"
+                                                       Elevation="2"
+                                                       VerticalOptions="Fill"
+                                                      BackgroundColor="#FEFEFE"
+                                                       Padding="1"
+                                                       HorizontalOptions="FillAndExpand">
+                                <StackLayout Padding="5">
+                                    <StackLayout IsVisible="{Binding NotShowLockQuizPassed}">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <ffimageloading:CachedImage LoadingDelay="0" x:Name="userprofilePic"
+                                                                            Margin="0,5,0,0" WidthRequest="{OnPlatform Android=60,iOS=60}"
+                                                                   HeightRequest="{OnPlatform Android=60,iOS=60}" Source="{Binding ImageURL}"
+                                                                   HorizontalOptions="Start" VerticalOptions="Center"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <ffTransformations:CircleTransformation />
+                                                </ffimageloading:CachedImage.Transformations>
+                                            </ffimageloading:CachedImage>
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}" FontFamily="{StaticResource QuranFontBold}" FontAttributes="Bold" TextColor="Black" FontSize="Body"/>
+                                                <Label Text="{Binding Description}" FontFamily="{StaticResource QuranFont}" FontSize="Body"/>
+                                            </StackLayout>
+                                            
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="FillAndExpand">
+                                            <Grid Margin="10,0,10,0" ColumnSpacing="15" IsVisible="{Binding ShowLearnTab}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Frame Grid.Column="0" CornerRadius="5" HasShadow="False"   BackgroundColor="#3b5998"
+                                                           Padding="2" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+                                                        <material:MaterialIcon Source="Learn.png" TintColor="White" IsVisible="{Binding IsLearnTabFree}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding IsLearnTabFree}" FontFamily="{StaticResource QuranFontBold}" Text="Learn"
+                                                                                VerticalTextAlignment="Center"  Style="{StaticResource TextBodyStyle}" TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding ShowLearnIcon}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                   <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.LearnTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+
+                                                </Frame>
+                                                <Frame Grid.Column="1" CornerRadius="5" HasShadow="False"   BackgroundColor="{StaticResource MainColor}"
+                                                           Padding="2" HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                        <material:MaterialIcon Source="play.png" TintColor="White" IsVisible="{Binding ShowIcon}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding ShowIcon}" FontFamily="{StaticResource QuranFontBold}" Text="Play" VerticalTextAlignment="Center"
+                                                                                Style="{StaticResource TextBodyStyle}" TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding LockQuiz}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.PlayTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>
+
+
+                                             <StackLayout Margin="10,0,10,0" IsVisible="{Binding ShowPlayTab}">
+                                                
+                                               <Frame Grid.Column="1" CornerRadius="5" HasShadow="False"   BackgroundColor="{StaticResource MainColor}"
+                                                           Padding="2" HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                        <material:MaterialIcon Source="play.png" TintColor="White" IsVisible="{Binding ShowIcon}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding ShowIcon}" FontFamily="{StaticResource QuranFontBold}" Text="Play" VerticalTextAlignment="Center"
+                                                                                Style="{StaticResource TextBodyStyle}"
+                                                                                TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding LockQuiz}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.PlayTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsTeacher}">
+                                            <Grid Margin="10,0,10,0" ColumnSpacing="15">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Frame Grid.Column="0" CornerRadius="5" HasShadow="False" BackgroundColor="#17a2b8"
+                                                           Padding="2" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                        <material:MaterialIcon Source="user_groups_icon.png" TintColor="White" />
+                                                        <material:MaterialLabel  FontFamily="{StaticResource QuranFontBold}" Text="Live Game" VerticalTextAlignment="Center"  Style="{StaticResource TextBodyStyle}"
+                                                                                 TextColor="White" FontAttributes="Bold" />
+                                                       
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.LiveGameTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>    
+                                        </StackLayout>
+                                        <!--<BoxView HeightRequest="1" Color="Gray" HorizontalOptions="FillAndExpand" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame  HasShadow="False"   
+                                                           Padding="5" HorizontalOptions="FillAndExpand">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand"  >
+                                                    <material:MaterialIcon Source="videoplay.png" TintColor="Gray" />
+                                                    <material:MaterialLabel Text="{Binding NumberPlayed}" FontFamily="{StaticResource QuranFont}"  VerticalTextAlignment="Center" FontSize="Body" TextColor="Black" FontAttributes="Bold" />
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame  HasShadow="False"   
+                                                           Padding="5" HorizontalOptions="FillAndExpand" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                    <material:MaterialIcon  Source="calendar.png" TintColor="Gray" />
+                                                    <material:MaterialLabel Text="{Binding Created}" FontFamily="{StaticResource QuranFont}"  VerticalTextAlignment="Center" FontSize="Body" TextColor="Black"  />
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame HasShadow="False"   
+                                                           Padding="5" HorizontalOptions="EndAndExpand">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+                                                    <material:MaterialIcon Source="list.png" TintColor="Gray" />
+                                                    <material:MaterialLabel FontFamily="{StaticResource QuranFont}" Text="{Binding NumberQuestions}" VerticalTextAlignment="Center" FontSize="Body" TextColor="Black" FontAttributes="Bold" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>-->
+                                    </StackLayout>
+                                    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding ShowLockQuizPassed}" BackgroundColor="#80000000">
+                                        <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                                            <ffimageloading:CachedImage LoadingDelay="0" x:Name="userprofilePic1"
+                                                                            Margin="0,5,0,2" WidthRequest="{OnIdiom Phone=60,Tablet=70}"
+                                                                   HeightRequest="{OnIdiom Phone=60,Tablet=70}" Source="{Binding ImageURL}"
+                                                                   HorizontalOptions="Start" VerticalOptions="Center"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <ffTransformations:TintTransformation EnableSolidColor="True" HexColor="#80000000" />
+                                                    <ffTransformations:CircleTransformation  />
+                                                </ffimageloading:CachedImage.Transformations>
+                                            </ffimageloading:CachedImage>
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}" FontFamily="{StaticResource QuranFontBold}" FontAttributes="Bold" TextColor="Black" FontSize="Body"/>
+                                                <Label Text="{Binding Description}" FontFamily="{StaticResource QuranFont}" FontSize="Body"/>
+                                            </StackLayout>
+                                            
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                                            <Grid Margin="10,0,10,0" ColumnSpacing="15" IsVisible="{Binding ShowLearnTab}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Frame Grid.Column="0" CornerRadius="5" HasShadow="False"   BackgroundColor="#803b5998"
+                                                           Padding="2" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+                                                        <material:MaterialIcon Source="Learn.png" TintColor="White" IsVisible="{Binding IsLearnTabFree}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding IsLearnTabFree}" FontFamily="{StaticResource QuranFontBold}" Text="Learn" VerticalTextAlignment="Center"
+                                                                                 Style="{StaticResource TextBodyStyle}" TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding ShowLearnIcon}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding GoogleTap}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                                <Frame Grid.Column="1" CornerRadius="5" HasShadow="False" BackgroundColor="#80f37737"
+                                                           Padding="2" HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                        <material:MaterialIcon Source="play.png" TintColor="White" IsVisible="{Binding ShowIcon}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding ShowIcon}" FontFamily="{StaticResource QuranFontBold}" Text="Play" VerticalTextAlignment="Center"
+                                                                                Style="{StaticResource TextBodyStyle}" TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding LockQuiz}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding GoogleTap}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>
+
+                                             <StackLayout Margin="10,0,10,0" IsVisible="{Binding ShowPlayTab}">
+                                                
+                                               <Frame Grid.Column="1" CornerRadius="5" HasShadow="False"   BackgroundColor="{StaticResource MainColor}"
+                                                           Padding="2" HorizontalOptions="FillAndExpand" >
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                                        <material:MaterialIcon Source="play.png" TintColor="White" IsVisible="{Binding ShowIcon}"/>
+                                                        <material:MaterialLabel IsVisible="{Binding ShowIcon}" FontFamily="{StaticResource QuranFontBold}" Text="Play" VerticalTextAlignment="Center"
+                                                                                Style="{StaticResource TextBodyStyle}" TextColor="White" FontAttributes="Bold" />
+                                                        <material:MaterialIcon Source="lock_icon.png" IsVisible="{Binding LockQuiz}" HorizontalOptions="Fill"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.PlayTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                             <StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsTeacher}">
+                                            <Grid Margin="10,5,10,0" ColumnSpacing="15">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Frame Grid.Column="0" CornerRadius="5" HasShadow="False" BackgroundColor="#17a2b8"
+                                                           Padding="2" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                        <material:MaterialIcon Source="user_groups_icon.png" TintColor="White" />
+                                                        <material:MaterialLabel  FontFamily="{StaticResource QuranFontBold}"
+                                                                                 Text="Live Game" VerticalTextAlignment="Center"  Style="{StaticResource TextBodyStyle}"
+                                                                                 TextColor="White" FontAttributes="Bold" />
+                                                       
+                                                    </StackLayout>
+                                                   
+                                                </Frame>
+                                            </Grid>    
+                                        </StackLayout>
+                                        </StackLayout>
+                                        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"     
+                                            AbsoluteLayout.LayoutFlags="PositionProportional"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <material:MaterialIcon WidthRequest="45" HeightRequest="45" TintColor="White" Source="LockQuizzes.png" HorizontalOptions="CenterAndExpand"
+                                                                   VerticalOptions="CenterAndExpand"/>
+                                         </AbsoluteLayout>
+                                        <AbsoluteLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.LockCourseTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/> 
+                                                    </AbsoluteLayout.GestureRecognizers>
+                                    </AbsoluteLayout>
+                                </StackLayout>
+                                    
+                                </material:MaterialCard>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid IsVisible="{Binding IsBusy}">
+                        <Grid.Triggers>
+                            <Trigger TargetType="Grid"
+                                 Property="IsVisible"
+                                 Value="False">
+                                <Setter Property="HeightRequest"
+                                    Value="20"/>
+                            </Trigger>
+                        </Grid.Triggers>
+                        <Label Text="Loading..."
+                           TextColor="Green"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Style="{StaticResource TextMediumStyle}"/>
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+
+                </Grid></Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="QuranicQuizzes.Views.SmallDevicesStyle">
+
+    <Style TargetType="Button" x:Key="MainButtonStyle">
+           <Setter Property="HeightRequest" Value="50"/>
+           <Setter Property="FontSize" Value="13"/>
+           <Setter Property="CornerRadius" Value="10" />
+           <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource QuranFontBold}" />
+           <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+    <Style TargetType="Button" x:Key="SubscribeButtonStyle">
+           <Setter Property="HeightRequest" Value="50"/>
+           <Setter Property="FontSize" Value="13"/>
+           <Setter Property="CornerRadius" Value="5" />
+           <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource QuranFontBold}" />
+           <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+    <Style TargetType="Button" x:Key="FlipBottomButtonStyle">
+           <Setter Property="HeightRequest" Value="50"/>
+           <Setter Property="FontSize" Value="13"/>
+           <Setter Property="CornerRadius" Value="5" />
+           <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource QuranFontBold}" />
+           <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+    <Style TargetType="Button" x:Key="FlipPageButtonStyle">
+           <Setter Property="HeightRequest" Value="25"/>
+           <Setter Property="FontSize" Value="10"/>
+           <Setter Property="CornerRadius" Value="5" />
+           <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource QuranFontBold}" />
+           <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+    <Style TargetType="Button" x:Key="MainButtonStyleRound">
+           <Setter Property="HeightRequest" Value="50"/>
+           <Setter Property="FontSize" Value="13"/>
+           <Setter Property="CornerRadius" Value="15" />
+           <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource QuranFontBold}" />
+           <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="TextDefaultStyle">
+          <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TextBodyStyle">
+          <Setter Property="FontSize" Value="15"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TextMediumStyle">
+          <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TextSmallStyle">
+          <Setter Property="FontSize" Value="11"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TextMicroStyle">
+          <Setter Property="FontSize" Value="10"/>
+    </Style>
+    <Style TargetType="Label" x:Key="TextLargeStyle">
+          <Setter Property="FontSize" Value="19"/>
+    </Style>
+</ResourceDictionary>

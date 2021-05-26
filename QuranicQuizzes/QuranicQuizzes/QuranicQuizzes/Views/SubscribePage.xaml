@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="QuranicQuizzes.Views.SubscribePage"
+       xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling" xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+             NavigationPage.HasNavigationBar="True"
+             >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Subscribe" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}"
+                   Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIcon  Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="50"  />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+                <StackLayout>
+                    <material:MaterialCard Padding="1" Margin="10,5,10,0">
+                        <StackLayout>
+                            <material:MaterialLabel Padding="5"  FontFamily="{StaticResource QuranFontBold}"
+                                                    Style="{StaticResource TextLargeStyle}" TextColor="White"
+                                                    Text="Individual Account" BackgroundColor="#17a2b8" VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <material:MaterialLabel Style="{StaticResource TextLargeStyle}" TextColor="Black"  FontFamily="{StaticResource QuranFontBold}" Text="{Binding IndividualAmountLblName}"/>
+                                <material:MaterialLabel Text="{Binding IndividualAmountMonthYear}" Style="{StaticResource TextMediumStyle}"  VerticalTextAlignment="End" TextColor="Gray"  FontFamily="{StaticResource QuranFontBold}" />
+
+                            </StackLayout>
+                            <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" TextColor="Black" Padding="10" HorizontalTextAlignment="Center" Text="Full Access to 100's Of Quizzes&#10; Save Progress&#10; Access to Members Dashboard&#10; User Reports &#10;Join Live Games"/>
+                            <BoxView HeightRequest="1"  Color="Gray"   />
+                            <material:MaterialLabel TextColor="Gray" Style="{StaticResource TextBodyStyle}" Text="Payment options"  HorizontalTextAlignment="Center"/>
+                            <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="pickerIndividualAccount"
+                            Title="Payment options"
+                                TitleColor="Black"
+                                TextColor="Black"
+                                HorizontalOptions="CenterAndExpand"
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource QuranFont}"
+                                FontSize="{OnIdiom Tablet=Large,Phone=Default}"
+                                SelectedIndex="{Binding SelectedIndex}"
+                                ItemsSource="{Binding SubscribeAmount}"
+                                ItemDisplayBinding="{ Binding Name}"
+                                SelectedItem="{Binding LvIndividualAmount}" >
+
+                                </customcontrols:CustomPicker>
+                                <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                               x:Name="btnDropDownpickerIndividualAccount"  BackgroundColor="Transparent" Image="dropdown_arrow.png" VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+
+                            </StackLayout>
+
+                            <BoxView HeightRequest="1"  Color="Gray"   />
+
+                            <material:MaterialButton Elevation="2" CornerRadius="3"  Style="{StaticResource SubscribeButtonStyle}"
+                                                  FontAttributes="Bold"
+                                                  Command="{Binding IndividualAccountCommand}" Padding="10"
+                                                  BackgroundColor="#17a2b8" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                  Margin="5,0,5,0"  Text="Purchase" />
+
+                            <material:MaterialLabel TextColor="Gray" Style="{StaticResource TextSmallStyle}"
+                                                     Text="No commitment, cancel any time"
+                                                HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </material:MaterialCard>
+                    <material:MaterialCard Padding="1" Margin="10,5,10,5">
+                        <StackLayout>
+                            <material:MaterialLabel Padding="5"  FontFamily="{StaticResource QuranFontBold}" VerticalTextAlignment="Center" Style="{StaticResource TextLargeStyle}" TextColor="White" Text="Family Account" BackgroundColor="#28a745" HorizontalTextAlignment="Center"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <material:MaterialLabel Style="{StaticResource TextLargeStyle}" TextColor="Black"  FontFamily="{StaticResource QuranFontBold}" Text="{Binding FamilyAmountLblName}"/>
+                                <material:MaterialLabel Style="{StaticResource TextMediumStyle}" VerticalTextAlignment="End" TextColor="Gray"  FontFamily="{StaticResource QuranFontBold}" Text="/mo"/>
+
+                            </StackLayout>
+                            <StackLayout Spacing="0">
+                                <material:MaterialLabel FontFamily="{StaticResource QuranFont}" Style="{StaticResource TextBodyStyle}" Padding="5" TextColor="Black"  HorizontalTextAlignment="Center" Text="1 Teacher Account"/>
+                                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                                    <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFontBold}" TextColor="Black"  HorizontalTextAlignment="Center" Text="{Binding NofStudent}"/>
+                                    <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" TextColor="Black" HorizontalTextAlignment="Center" Text=" Student Accounts"/>
+
+                                </StackLayout>
+                                <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" TextColor="Black" Padding="10,5,10,10" HorizontalTextAlignment="Center" Text="Manage Live Games&#10;Set Quizzes as Assignments&#10;Access to Student Management Dashboard&#10;Access to Detailed Reports for Each Student&#10;All Individual Account Features"/>
+
+                            </StackLayout>
+                            <BoxView HeightRequest="1"  Color="Gray"   />
+                            <material:MaterialLabel TextColor="Gray" Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" Text="Number of Student Accounts"  HorizontalTextAlignment="Center"/>
+
+                            <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                                <customcontrols:CustomPicker 
+                            x:Name="pickerFamilyAccount"
+                            Title="Payment options"
+                                TitleColor="Black"
+                                TextColor="Black"
+                                HorizontalOptions="CenterAndExpand"
+                                BackgroundColor="Transparent"
+                                      FontFamily="{StaticResource QuranFont}"
+                                SelectedIndex="{Binding SelectedIndex1}"
+                                FontSize="{OnIdiom Tablet=Large,Phone=Default }"
+                                ItemsSource="{Binding SubscribeFamilyAmount}"
+                                ItemDisplayBinding="{ Binding Name}"
+                                SelectedItem="{Binding LvscribeFamilyAmount}" >
+
+                                </customcontrols:CustomPicker>
+                                <material:MaterialIconButton TintColor="Black" PressedBackgroundColor="Transparent"
+                                                              x:Name="btnDropDownpickerFamilyAccount"  BackgroundColor="Transparent"
+                                                              Image="dropdown_arrow.png" VerticalOptions="CenterAndExpand"
+                                                              HorizontalOptions="Start"/>
+
+                            </StackLayout>
+
+                            <BoxView HeightRequest="1"  Color="Gray"   />
+
+                            <material:MaterialButton Elevation="2" CornerRadius="5" Style="{StaticResource SubscribeButtonStyle}"
+                                                  FontAttributes="Bold" Command="{Binding FamilyAccountCommand}" Padding="10"
+                                                  BackgroundColor="#28a745" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                  Margin="5,0,5,0" Text="Purchase" />
+                            <material:MaterialLabel TextColor="Gray" Style="{StaticResource TextSmallStyle}"
+                                                     Text="No commitment, cancel any time"
+                                                HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </material:MaterialCard>
+                    <material:MaterialCard x:Name="InstitutionAccount" Padding="1" Margin="20,5,20,5">
+                        <StackLayout>
+                            <material:MaterialLabel Padding="5"  FontFamily="{StaticResource QuranFontBold}"
+                                                    Style="{StaticResource TextLargeStyle}" TextColor="White"
+                                                    Text="Institution Account" BackgroundColor="#007bff"
+                                                    VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+                            <material:MaterialLabel Style="{StaticResource TextLargeStyle}"  TextColor="Black" HorizontalTextAlignment="Center"  FontFamily="{StaticResource QuranFontBold}" Text="Negotiable"/>
+
+
+                            <material:MaterialLabel FontFamily="{StaticResource QuranFont}" Style="{StaticResource TextBodyStyle}" TextColor="Black" Padding="10" HorizontalTextAlignment="Center" Text="Negotiable Number Teacher Accounts
+&#10;Negotiable Number Student Accounts
+&#10;All Individual and Family Account Features"/>
+
+                            <BoxView HeightRequest="1"  Color="Gray"   />
+                            <material:MaterialButton Elevation="2" CornerRadius="5"  Style="{StaticResource MainButtonStyle}"
+                                                  FontAttributes="Bold" Command="{Binding ContactusClickCommand}"
+                                                  Padding="10"  BackgroundColor="#007bff" FontFamily="{StaticResource QuranFontBold}" AllCaps="False" Margin="5,0,5,0" Text="Contact us" />
+
+                        </StackLayout>
+                    </material:MaterialCard>
+                    <Label HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}"
+                       Margin="20,0,20,10" Style="{StaticResource TextMicroStyle}"
+       VerticalOptions="FillAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="For more
+information, see our " FontFamily="{StaticResource QuranFontBold}" />
+                                <Span Text="Terms and Conditions" FontFamily="{StaticResource QuranFontBold}"
+                  TextColor="Blue"
+                  TextDecorations="Underline" >
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TermsClickCommand}" 
+                                          CommandParameter="https://quranicquizzes.com/Legal/Terms" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text=" and " FontFamily="{StaticResource QuranFontBold}" />
+                                <Span Text="Privacy Policy" FontFamily="{StaticResource QuranFontBold}"
+                  TextColor="Blue"
+                  TextDecorations="Underline" >
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ProvacyPolicyClickCommand}" 
+                                          CommandParameter="https://quranicquizzes.com/Legal/Terms" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

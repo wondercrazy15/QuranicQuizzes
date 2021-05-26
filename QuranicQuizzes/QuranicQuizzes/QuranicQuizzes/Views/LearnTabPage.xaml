@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling" xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="QuranicQuizzes.Views.LearnTabPage">
+      <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+            <material:MaterialButton HorizontalOptions="EndAndExpand" BorderColor="White" ButtonType="Outlined" TextColor="White"
+                                     BackgroundColor="Transparent" Image="circled_play" AllCaps="False" Text="Flash Cards"
+                                     Command="{Binding FlashCardClick}" Padding="10,0,10,0" />
+            <material:MaterialButton HorizontalOptions="End" BorderColor="White" Margin="0,0,2,0" ButtonType="Outlined"
+                                     TextColor="White" Padding="10,0,10,0"
+                                     BackgroundColor="Transparent" Image="circled_play" AllCaps="False" Text="Play Quiz"
+                                     Command="{Binding PlayCommand}"  />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+
+                   <StackLayout Spacing="0">
+                           
+                        <customcontrols:AuthroiseWebView  x:Name="LearnWebView" Source="{Binding SourceURL}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
+
+                        </customcontrols:AuthroiseWebView>
+                 
+                   <Label Text="Learn tab is not available for this" VerticalOptions="CenterAndExpand" x:Name="ErrorMsg" IsVisible="False" TextColor="Black" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFontBold}" FontSize="Medium" />
+         
+                    <StackLayout BackgroundColor="#3E4349" Padding="5" HeightRequest="40" VerticalOptions="End" Orientation="Horizontal">
+<StackLayout IsVisible="{Binding IsSoundTab}" VerticalOptions="Fill" HorizontalOptions="Start">
+                        
+                       <material:MaterialIcon  IsVisible="{Binding IsDownload}" HeightRequest="30" WidthRequest="30"  BackgroundColor="Transparent" TintColor="{Binding IconColor}" VerticalOptions="Fill" HorizontalOptions="Start" >
+                   </material:MaterialIcon>
+    </StackLayout>
+                        <StackLayout IsVisible="{Binding IsSoundTab}" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" >
+                              <material:MaterialIcon IsVisible="{Binding IsPlay}"  Source="Circle_Play" HeightRequest="40" WidthRequest="40"  BackgroundColor="Transparent" TintColor="White" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" >
+                               <material:MaterialIcon.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding PlaySoundCommand}"/>
+                    </material:MaterialIcon.GestureRecognizers>
+                          </material:MaterialIcon>
+                           <material:MaterialIcon Source="Circle_Pause" IsVisible="{Binding IsResume}" HeightRequest="40" WidthRequest="40"  BackgroundColor="Transparent" TintColor="White" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand" >
+                               <material:MaterialIcon.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding PauseSoundCommand}"/>
+                    </material:MaterialIcon.GestureRecognizers>
+                          </material:MaterialIcon>
+                     </StackLayout>
+                   
+                    <StackLayout IsVisible="{Binding IsSoundTab}" HorizontalOptions="End" VerticalOptions="Fill" >
+                    
+                    <material:MaterialIcon HorizontalOptions="End" IsVisible="{Binding IsDownload}" Margin="0,0,5,0" Source="download" HeightRequest="30" WidthRequest="30"  BackgroundColor="Transparent" TintColor="White" VerticalOptions="Fill" >
+                               <material:MaterialIcon.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding DownloadCommand}"/>
+                    </material:MaterialIcon.GestureRecognizers>
+                          </material:MaterialIcon>
+
+                   </StackLayout>
+                   </StackLayout>
+                       
+                  
+                   </StackLayout>
+  
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:local="clr-namespace:QuranicQuizzes.ViewModels"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundImageSource="{Binding BackgroundImg}"
+             x:Class="QuranicQuizzes.Views.HomePage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Home" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}" >
+
+                <!--<Label.TextColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="White" />
+                    <On Platform="iOS" Value="Black" />
+                </OnPlatform>
+            </Label.TextColor>-->
+
+            </Label>
+            <material:MaterialIcon WidthRequest="50"  />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        
+        <StackLayout>
+           
+            <Grid Margin="0,0,0,0" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Column="0"  HasShadow="False"   BackgroundColor="{Binding CategoryBGcolor}"
+                                                           Padding="15" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Categories"
+                                                VerticalTextAlignment="Center" Style="{StaticResource TextBodyStyle}"
+                                                TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CategoryTap}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame Grid.Column="1"  HasShadow="False"   BackgroundColor="{Binding CourseBGcolor}"
+                                                           Padding="15" HorizontalOptions="FillAndExpand" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Courses"
+                                                VerticalTextAlignment="Center" Style="{StaticResource TextBodyStyle}"
+                                                TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CourseTap}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <ActivityIndicator
+                 Color="White"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                 />
+            <!--<local:CustomLoader 
+            x:Name="loader"
+            Grid.Row="0" 
+            Source="Quran.png"
+            RotationLenght="2500"
+            IsVisible="{Binding IsBusy}" 
+            IsRunning="{Binding IsBusy}"
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="CenterAndExpand"/>-->
+
+            <CollectionView x:Name="CategoriesList"
+                            BackgroundColor="Transparent"
+                            VerticalScrollBarVisibility="Never"
+                             VerticalOptions="StartAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                             ItemsSource="{Binding category}" SelectionMode="Single" IsVisible="{Binding IsVisibleCategory}"
+                       Margin="10,5,10,5">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" Spacing="-6">
+                            <Frame BorderColor="LightGray" HeightRequest="{OnIdiom Phone=155,Tablet=210}" CornerRadius="10" HasShadow="False" Padding="{OnIdiom Phone=5,Tablet=8}">
+                                <StackLayout Padding="5" Orientation="Vertical" Spacing="5">
+                                    <!--<Image Margin="0,5,0,0" WidthRequest="{OnPlatform Android=60,iOS=60}" HeightRequest="{OnPlatform Android=60,iOS=60}" Source="{Binding ImageURL}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" />-->
+                                    <ffimageloading:CachedImage x:Name="userprofilePic" LoadingDelay="0"
+                                                                   Margin="0,5,0,0" WidthRequest="{OnIdiom Phone=60,Tablet=100}"
+                                                                   HeightRequest="{OnIdiom Phone=60,Tablet=100}" Source="{Binding ImageURL}"
+                                                                   HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                                                                   BackgroundColor="Transparent" Aspect="Fill" >
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <ffTransformations:CircleTransformation />
+                                        </ffimageloading:CachedImage.Transformations>
+                                        <!--    <controls:CircleImage.GestureRecognizers>
+                      <TapGestureRecognizer Tapped="ImageOnClick"/>
+                   </controls:CircleImage.GestureRecognizers>-->
+                                    </ffimageloading:CachedImage>
+
+                                    <Label Text="{Binding CategoryName}" MaxLines="2" TextColor="Black"
+                                           Style="{StaticResource TextDefaultStyle}"
+                                           HorizontalTextAlignment="Center" VerticalOptions="Fill"/>
+                                    <Label  MaxLines="2" Text="{Binding Description}" Style="{StaticResource TextMicroStyle}"
+                                            HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"
+                                            FontAttributes="Bold"/>
+                                    <!--<Frame Style="{StaticResource FrameStyle}">
+                            <Label Text="{Binding BrandName}" Style="{StaticResource LabelStyle}" />
+                        </Frame>-->
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                Command="{Binding Path=BindingContext.CategoryClickCommand, Source={x:Reference CategoriesList}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+                        <!--<StackLayout Padding="10">  
+                                <Frame BorderColor="LightGray" HeightRequest="200" CornerRadius="10" HasShadow="True" Padding="5">  
+                           <StackLayout>
+                               <Image  Margin="10" HeightRequest="90" WidthRequest="50" Source="{Binding ImageURL}" Aspect="Fill"/>  
+                                        <Label Text="{Binding CategoryName}" TextColor="#14B7F8" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>  
+                                        <Label Text="{Binding Description}"  HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>  
+  
+                           </StackLayout>
+                                        
+                                </Frame>  
+                            </StackLayout>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <CollectionView x:Name="CourseList"  IsVisible="{Binding IsVisibleCourse}" ItemsSource="{Binding Courses}"  
+                                 Margin="10,5,10,5">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout  Orientation="Vertical" Span="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" Spacing="-6">
+                            <Frame BorderColor="LightGray" HeightRequest="{OnIdiom Phone=140,Tablet=210}" CornerRadius="10" HasShadow="False" Padding="5">
+                                <StackLayout Padding="5" Orientation="Vertical" Spacing="5">
+                                    <!--<Image Margin="0,5,0,0" WidthRequest="{OnPlatform Android=60,iOS=60}" HeightRequest="{OnPlatform Android=60,iOS=60}" Source="{Binding ImageURL}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" />-->
+                                    <ffimageloading:CachedImage x:Name="userprofilePic" LoadingDelay="0"
+                                                                            Margin="0,5,0,0" WidthRequest="{OnIdiom Phone=60,Tablet=100}"
+                                                                   HeightRequest="{OnIdiom Phone=60,Tablet=100}" Source="{Binding ImageURL}"
+                                                                    HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <ffTransformations:CircleTransformation />
+                                        </ffimageloading:CachedImage.Transformations>
+                                        <!--    <controls:CircleImage.GestureRecognizers>
+                      <TapGestureRecognizer Tapped="ImageOnClick"/>
+                   </controls:CircleImage.GestureRecognizers>-->
+                                    </ffimageloading:CachedImage>
+
+                                    <Label Text="{Binding Name}" MaxLines="2" Style="{StaticResource TextDefaultStyle}" TextColor="Black" HorizontalTextAlignment="Center" VerticalOptions="Fill"/>
+                                    <Label Text="{Binding Description}" MaxLines="2" Style="{StaticResource TextMicroStyle}" HorizontalTextAlignment="Center" VerticalOptions="Fill" FontAttributes="Bold"/>
+                                    <!--<Frame Style="{StaticResource FrameStyle}">
+                            <Label Text="{Binding BrandName}" Style="{StaticResource LabelStyle}" />
+                        </Frame>-->
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                Command="{Binding Path=BindingContext.CourseListCommand, Source={x:Reference CourseList}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+                        <!--<StackLayout Padding="10">  
+                                <Frame BorderColor="LightGray" HeightRequest="200" CornerRadius="10" HasShadow="True" Padding="5">  
+                           <StackLayout>
+                               <Image  Margin="10" HeightRequest="90" WidthRequest="50" Source="{Binding ImageURL}" Aspect="Fill"/>  
+                                        <Label Text="{Binding CategoryName}" TextColor="#14B7F8" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>  
+                                        <Label Text="{Binding Description}"  HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>  
+  
+                           </StackLayout>
+                                        
+                                </Frame>  
+                        </StackLayout>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

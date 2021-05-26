@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="QuranicQuizzes.Views.LiveGamePage" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling" xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             >
+      <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Live Game" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIcon  Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="50"  />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+         <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+           <customcontrols:AuthroiseWebView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="webview"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/> 
+
+          <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0.02,0.15,0.25">
+                       <material:MaterialIcon Source="close" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" TintColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill" >
+                               <material:MaterialIcon.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="Handle_CloseTapped"/>
+                    </material:MaterialIcon.GestureRecognizers>
+                           </material:MaterialIcon>
+               </StackLayout>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

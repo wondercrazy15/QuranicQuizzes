@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="QuranicQuizzes.Views.StartGamePage"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    NavigationPage.HasNavigationBar="True"
+    NavigationPage.HasBackButton="True">
+   <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Live Game" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIcon  Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="50"  />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+           <customcontrols:AuthroiseWebView x:Name="webview" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="{Binding SourceUrl}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/> 
+
+           <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0.02,0.15,0.25">
+                       <material:MaterialIcon Source="close" HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" TintColor="White" VerticalOptions="Fill" HorizontalOptions="Fill" >
+                               <material:MaterialIcon.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="Handle_CloseTapped"/>
+                    </material:MaterialIcon.GestureRecognizers>
+                           </material:MaterialIcon>
+               </StackLayout>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

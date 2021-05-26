@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfFlipViewControl="clr-namespace:QuranicQuizzes.CustomControls"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="QuranicQuizzes.Views.LearnTabFlipPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0, 20, 0, 0
+            </OnPlatform.iOS>
+        </OnPlatform>
+    </ContentPage.Padding>
+        <Grid RowSpacing="0" Margin="0,10,0,0">
+        <Label Text="Demo" Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
+               FontFamily="{StaticResource QuranFontBold}"
+               Style="{StaticResource TextLargeStyle}" ></Label>
+        <material:MaterialButton  CornerRadius="10" Grid.Row="1" 
+                                                     Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipPageButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand" WidthRequest="200"
+                                             BackgroundColor="Red" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="10,0,10,0" Text="Rest Progress" />
+        <material:MaterialButton  CornerRadius="10" Grid.Row="2"
+                                                     Command="{Binding CloseTap}"
+                                             Style="{StaticResource FlipPageButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="Gray" WidthRequest="200" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="10,0,10,0" Text="Close" Margin="0,0,0,10" />
+
+        <xfFlipViewControl:XFFlipView x:Name="XFFlipViewControl1" Grid.Row="3"  >
+
+            <xfFlipViewControl:XFFlipView.FrontView>
+                <Frame
+                    Margin="20,0,20,0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    OutlineColor="Silver">
+                    <StackLayout>
+                        <StackLayout VerticalOptions="Start">
+                            <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
+                                <Label Text="1 / 10"></Label>
+                                 <material:MaterialIcon  HorizontalOptions="EndAndExpand" TintColor="#70ad47"
+                                               Source="speaker.png">
+                            <material:MaterialIcon.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SoundTap}" />
+                            </material:MaterialIcon.GestureRecognizers>
+                        </material:MaterialIcon>
+                            </StackLayout>
+                            <BoxView HeightRequest="1" Color="Silver" />
+                        </StackLayout>
+                        <StackLayout Spacing="0" BackgroundColor="Transparent" VerticalOptions="EndAndExpand">
+                            <BoxView HeightRequest="1" Color="Silver" />
+                            <material:MaterialButton Margin="5" x:Name="frontViewLabel" CornerRadius="10"
+                                                     Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="#5bc0de" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                      Text="Answer" />
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+            </xfFlipViewControl:XFFlipView.FrontView>
+
+            <xfFlipViewControl:XFFlipView.BackView>
+                <Frame
+                    BackgroundColor="Transparent"
+                    Margin="20,0,20,0"
+                    Padding="0"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    OutlineColor="Silver">
+                    <StackLayout>
+                        <StackLayout BackgroundColor="Transparent" Spacing="0" VerticalOptions="EndAndExpand">
+                            <BoxView HeightRequest="1" Color="Silver" />
+                            <Grid>
+                                <material:MaterialButton Margin="5" Grid.Column="0" x:Name="backViewLabel" CornerRadius="10"
+                                                     Clicked="flipItButton_OnClicked" ButtonType="Outlined"
+                                             Style="{StaticResource FlipBottomButtonStyle}" BorderColor="Blue"
+                                                     HorizontalOptions="CenterAndExpand" TextColor="Blue"
+                                              FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="20,0,20,0" Text="Review" />
+                                <material:MaterialButton Margin="5" Grid.Column="1" CornerRadius="10" 
+                                                ButtonType="Outlined"  TextColor="Green"   Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand" BorderColor="Green"
+                                              FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="20,0,20,0" Text="Learnt" />
+                            </Grid>
+                            <BoxView HeightRequest="1" Color="Silver" />
+                            <material:MaterialButton Margin="5" CornerRadius="10"
+                                                     Clicked="flipItButton_OnClicked" 
+                                             Style="{StaticResource FlipBottomButtonStyle}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                             BackgroundColor="#5bc0de" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                                     Padding="20,0,20,0" Text="Question" />
+                        </StackLayout>
+                    </StackLayout>
+                   
+                </Frame>
+            </xfFlipViewControl:XFFlipView.BackView>
+
+        </xfFlipViewControl:XFFlipView>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="400" />
+        </Grid.RowDefinitions>
+    </Grid>
+    
+</ContentPage>

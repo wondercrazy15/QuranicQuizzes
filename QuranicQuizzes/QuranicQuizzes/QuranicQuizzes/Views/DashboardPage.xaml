@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+            xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+            xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+            xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+            xmlns:local="clr-namespace:QuranicQuizzes.Views" NavigationPage.HasNavigationBar="True"
+             x:Class="QuranicQuizzes.Views.DashboardPage">
+      <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Dashboard" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <StackLayout Orientation="Horizontal">
+               <material:MaterialMenuButton x:Name="Menus" ButtonType="Text" Image="list" TintColor="White"
+                                            BackgroundColor="Transparent" CornerRadius="24"
+                                            Choices="{Binding Actions}"  MenuSelected="MaterialMenuButton_MenuSelected"  />
+            </StackLayout>
+            
+        </StackLayout>
+    </NavigationPage.TitleView>
+     <ContentPage.Content>
+
+        <StackLayout>
+
+            <Grid Margin="0,0,0,0" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Frame  Grid.Column="0"  HasShadow="False" HeightRequest="{OnIdiom Phone=40, Tablet=50}"  BackgroundColor="{Binding HomeBGcolor}"
+                                                           Padding="1" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Home"
+                                                LineBreakMode="TailTruncation" VerticalTextAlignment="Center"
+                                                Style="{StaticResource TextSmallStyle}" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Home}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame Grid.Column="1"  HasShadow="False" HeightRequest="{OnIdiom Phone=40, Tablet=50}"   BackgroundColor="{Binding QuizzesBGcolor}"
+                                                           Padding="1" HorizontalOptions="FillAndExpand" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Quizzes"
+                                                LineBreakMode="TailTruncation" VerticalTextAlignment="Center" Style="{StaticResource TextSmallStyle}" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Quizzes}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                 <Frame Grid.Column="2"  HasShadow="False" HeightRequest="{OnIdiom Phone=40, Tablet=50}"   BackgroundColor="{Binding LivegamesBGcolor}"
+                                                           Padding="1" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Live games" LineBreakMode="TailTruncation"
+                                                VerticalTextAlignment="Center" Style="{StaticResource TextSmallStyle}" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Livegames}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                 <Frame Grid.Column="3"  HasShadow="False"  HeightRequest="{OnIdiom Phone=40, Tablet=50}"  BackgroundColor="{Binding Assignments}"
+                                                           Padding="1" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"  >
+
+                        <material:MaterialLabel FontFamily="{StaticResource QuranFontBold}" Text="Assignments" LineBreakMode="TailTruncation"
+                                                VerticalTextAlignment="Center" Style="{StaticResource TextSmallStyle}"  TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding AssignmentsTap}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,5,0" IsVisible="{Binding IsCustomDate}">
+             <StackLayout  Orientation="Horizontal" 
+                                      Margin="{OnPlatform Android='0,1,0,0',iOS='0,5,0,0'}">
+                                <DatePicker x:Name="StartDatePicker"
+                                        FontSize="{OnIdiom Tablet=Large,Phone=Body }"
+                                        TextColor="Gray"
+                                        Date="{Binding SelectedStartDate}"
+                                        HorizontalOptions="Fill" />
+                                <material:MaterialIcon  HorizontalOptions="Start"
+                                                    x:Name="StartDatePickerImageTap"
+                                                    Source="calendar"
+                                                    />
+                </StackLayout>
+                <StackLayout  Orientation="Horizontal"
+                                      Margin="{OnPlatform Android='0,1,0,0',iOS='0,5,0,0'}">
+                                <DatePicker x:Name="EndDatePicker"
+                                        FontSize="{OnIdiom Tablet=Large,Phone=Body }"
+                                        TextColor="Gray"
+                                        Date="{Binding SelectedEndDate}"
+                                        MaximumDate="{Binding MaxDate}"
+                                        HorizontalOptions="Fill" />
+                                <material:MaterialIcon  HorizontalOptions="Start"
+                                                    x:Name="EndDatePickerImageTap"
+                                                    Source="calendar"
+                                                    />
+                            </StackLayout>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsHomeList}">
+                <ListView x:Name="HomeList" SelectionMode="None" Margin="0,5,0,0" HasUnevenRows="True" ItemsSource="{Binding HomeList}" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                 <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <material:MaterialCard Elevation="2" HasShadow="False" Margin="20,5,20,5" CornerRadius="2"  BackgroundColor="#ffffff" Padding="0">
+                
+                          <StackLayout Padding="10,5,10,5" Orientation="Horizontal">
+                               <StackLayout HorizontalOptions="StartAndExpand">
+                              <material:MaterialLabel TextColor="Black" Style="{StaticResource TextBodyStyle}"  FontFamily="{StaticResource QuranFontBold}" Text="{Binding dataCount}"/>
+                              <material:MaterialLabel TextColor="Gray" Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFont}" Text="{Binding dataTitle}"/>
+                              </StackLayout>
+                              <material:MaterialIcon BackgroundColor="Transparent" Source="{Binding Icon}"
+                                                     TintColor="{Binding Color}"
+                                  VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                             
+                          </StackLayout>
+                                 <material:MaterialCard.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.HomeListTap, Source={x:Reference HomeList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </material:MaterialCard.GestureRecognizers>
+                                </material:MaterialCard>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+         </ListView>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsQuizzesList}">
+            <ScrollView Orientation="Horizontal">
+                <ListView WidthRequest="900" HorizontalScrollBarVisibility="Always" x:Name="QuizzesList" HorizontalOptions="FillAndExpand"
+                          SelectionMode="None" HasUnevenRows="True" ItemsSource="{Binding QuizzesDataList}"
+                          BackgroundColor="Transparent" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                 <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                             <material:MaterialCard Elevation="2" HasShadow="False" Margin="2" CornerRadius="2"  BackgroundColor="#ffffff" Padding="0">
+                            <Grid BackgroundColor="Transparent" Padding="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Name}" FontSize="Body" TextColor="Black" VerticalOptions="FillAndExpand" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+
+                                <Label Grid.Column="1" FontSize="Body" Text="{Binding Type}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Label Grid.Column="2" FontSize="Body" Text="{Binding QuizStarted}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                <Label Grid.Column="3" FontSize="Body" Text="{Binding QuizFinished}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                 <StackLayout Grid.Column="4" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding ProgressLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding FirstBarBounds}" BackgroundColor="#17a2b8">
+                                                        <Label Padding="0,0,0,0" Text="{Binding BarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                    <!--<ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0,.75,1" BackgroundColor="Red">
+                                                        <Label Text="75%" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                                                    </ContentView>-->
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+
+                                         <StackLayout Grid.Column="5" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding CorrectLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectFirstBarBounds}" BackgroundColor="#28a745">
+                                                        <Label Text="{Binding CorrectFirstBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectSecondBarBounds}" BackgroundColor="#dc3545">
+                                                        <Label  Text="{Binding CorrectSecondBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                <Label Grid.Column="6" FontSize="Body" Text="{Binding TotalScore}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                          
+                             <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.QuizzesTap, Source={x:Reference QuizzesList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Grid.GestureRecognizers>
+                                  </Grid>
+                                 </material:MaterialCard>
+                            </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Header>
+                   
+                    <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                             <ColumnDefinition Width="150" />
+                             <ColumnDefinition Width="150" />
+                             <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label VerticalTextAlignment="Center" Text="Quiz" HorizontalTextAlignment="Center"
+                               FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+
+                        <Label VerticalTextAlignment="Center" Text="Type" Grid.Column="1" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+
+                        <Label VerticalTextAlignment="Center" Text="Date Started" Grid.Column="2" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+
+                        <Label VerticalTextAlignment="Center" Text="Date Finished" Grid.Column="3" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+                        <Label VerticalTextAlignment="Center" Text="Progress" Grid.Column="4" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+                        <Label VerticalTextAlignment="Center" Text="Correct" Grid.Column="5" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+                        <Label VerticalTextAlignment="Center" Text="Score" Grid.Column="6" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black"/>
+                        <BoxView
+                            Grid.Row="1"
+                             Grid.ColumnSpan="7"
+                             HeightRequest="1"
+                             BackgroundColor="LightGray"/>
+                    </Grid>
+                      
+                </ListView.Header>
+             </ListView>
+            </ScrollView>
+        </StackLayout>
+            <StackLayout IsVisible="{Binding IsLiveGameTabList}">
+            <ScrollView Orientation="Horizontal">
+                <ListView WidthRequest="900" HorizontalScrollBarVisibility="Always" x:Name="LiveGameTabList" HorizontalOptions="FillAndExpand" SelectionMode="None" HasUnevenRows="True" ItemsSource="{Binding LiveGameDataList}" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <material:MaterialCard Elevation="2" HasShadow="False" Margin="2" CornerRadius="2" BackgroundColor="#ffffff" Padding="0">
+                                    <Grid BackgroundColor="Transparent" Padding="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="100" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" FontSize="Body" TextColor="Black" VerticalOptions="FillAndExpand" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="1" FontSize="Body" Text="{Binding Type}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="2" FontSize="Body" Text="{Binding QuizStarted}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="3" FontSize="Body" Text="{Binding QuizFinished}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <StackLayout Grid.Column="4" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding ProgressLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding FirstBarBounds}" BackgroundColor="#17a2b8">
+                                                        <Label Padding="0,0,0,0" Text="{Binding BarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                    <!--<ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0,.75,1" BackgroundColor="Red">
+                                                        <Label Text="75%" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                                                    </ContentView>-->
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="5" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding CorrectLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectFirstBarBounds}" BackgroundColor="#28a745">
+                                                        <Label Text="{Binding CorrectFirstBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectSecondBarBounds}" BackgroundColor="#dc3545">
+                                                        <Label  Text="{Binding CorrectSecondBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                        <Label Grid.Column="6" FontSize="Body" Text="{Binding TotalScore}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.LiveGameTap, Source={x:Reference LiveGameTabList}}" CommandParameter="{Binding .}" />
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+                                </material:MaterialCard>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Header>
+
+                        <Grid BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label VerticalTextAlignment="Center" Text="Quiz" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label VerticalTextAlignment="Center" Text="Type" Grid.Column="1" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label VerticalTextAlignment="Center" Text="Date Started" Grid.Column="2" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label VerticalTextAlignment="Center" Text="Date Finished" Grid.Column="3" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label VerticalTextAlignment="Center" Text="Progress" Grid.Column="4" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label VerticalTextAlignment="Center" Text="Correct" Grid.Column="5" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label VerticalTextAlignment="Center" Text="Score" Grid.Column="6" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}" TextColor="Black" />
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="7" HeightRequest="1" BackgroundColor="LightGray" />
+                        </Grid>
+
+                    </ListView.Header>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+            <StackLayout IsVisible="{Binding IsAssignmentTabList}">
+            <ScrollView Orientation="Horizontal">
+                <ListView WidthRequest="900" HorizontalScrollBarVisibility="Always" x:Name="AssignmentTabList" HorizontalOptions="FillAndExpand" SelectionMode="None" HasUnevenRows="True" ItemsSource="{Binding AssignmentDataList}" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <material:MaterialCard HasShadow="False" Margin="2" CornerRadius="2" BackgroundColor="#ffffff" Padding="0">
+                                    <Grid BackgroundColor="Transparent" Padding="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="100" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" FontSize="Body" TextColor="Black" VerticalOptions="FillAndExpand" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="1" FontSize="Body" Text="{Binding Type}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="2" FontSize="Body" Text="{Binding QuizStarted}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label Grid.Column="3" FontSize="Body" Text="{Binding QuizFinished}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <StackLayout Grid.Column="4" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding ProgressLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding FirstBarBounds}" BackgroundColor="#17a2b8">
+                                                        <Label Padding="0,0,0,0" Text="{Binding BarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                    <!--<ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,0,.75,1" BackgroundColor="Red">
+                                                        <Label Text="75%" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontAttributes="Bold" />
+                                                    </ContentView>-->
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+
+                                         <StackLayout Grid.Column="5" Orientation="Vertical">
+                                            <Label  FontSize="Body" Text="{Binding CorrectLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                            <Frame HasShadow="False" HeightRequest="20" CornerRadius="5" HorizontalOptions="Fill" Padding="0" BackgroundColor="Silver" IsClippedToBounds="True">
+                                                <AbsoluteLayout Padding="0">
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectFirstBarBounds}" BackgroundColor="#28a745">
+                                                        <Label Text="{Binding CorrectFirstBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}"/>
+                                                    </ContentView>
+                                                    <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="{Binding CorrectSecondBarBounds}" BackgroundColor="#dc3545">
+                                                        <Label  Text="{Binding CorrectSecondBarValue,StringFormat='\{0\}%'}" FontSize="Small" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource QuranFont}" />
+                                                    </ContentView>
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                        <!--<Label Grid.Column="5" FontSize="Body" Text="{Binding CorrectLabel}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />-->
+
+                                        <Label Grid.Column="6" FontSize="Body" Text="{Binding TotalScore}" TextColor="Black" FontFamily="{StaticResource QuranFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.AssignmentTap, Source={x:Reference AssignmentTabList}}" CommandParameter="{Binding .}" />
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+                                </material:MaterialCard>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Header>
+
+                        <Grid BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Quiz" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label Text="Type" VerticalTextAlignment="Center" Grid.Column="1" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label Text="Date Started" VerticalTextAlignment="Center" Grid.Column="2" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+
+                            <Label Text="Date Finished" VerticalTextAlignment="Center" Grid.Column="3" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label Text="Progress" VerticalTextAlignment="Center" Grid.Column="4" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label Text="Correct" VerticalTextAlignment="Center" Grid.Column="5" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}"  TextColor="Black" />
+                            <Label Text="Score" VerticalTextAlignment="Center" Grid.Column="6" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" FontSize="{OnPlatform Android='Subtitle',iOS='Default'}" TextColor="Black" />
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="7" HeightRequest="1" BackgroundColor="LightGray" />
+                        </Grid>
+
+                    </ListView.Header>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+            </StackLayout>
+         </ContentPage.Content>
+
+
+        <!--<local:HomeTabPage/>
+        <local:QuizzesTabPage/>
+        <local:LiveGameTabPage/>
+        <local:AssignmentTabPage/>-->
+        
+</ContentPage>

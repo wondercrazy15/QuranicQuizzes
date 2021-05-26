@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+             x:Class="QuranicQuizzes.App">
+	<Application.Resources>
+        <ResourceDictionary x:Name="dictionary">
+            <Color x:Key="MainColor" >#f37737</Color>
+            <Color x:Key="GrayTextColor" >#5E5E5E</Color>
+            <Color x:Key="placeholderTextColor" >#5E5E5E</Color>
+            <Color x:Key="StatusbarColor" >#3E4349</Color>
+            <Color x:Key="OrangeColor" >#3E4349</Color>
+            
+         <OnPlatform x:TypeArguments="x:String" x:Key="QuranFont">
+                <On Platform="Android" Value="Lato_Regular.ttf#Regular" />
+                <On Platform="iOS" Value="Lato-Regular" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="QuranFontBold">
+                <On Platform="Android" Value="Lato_Bold.ttf#Bold" />
+                <On Platform="iOS" Value="Lato-Bold" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="ArabicFont">
+                <On Platform="Android" Value="PDMS_Saleem_QuranFont.ttf#Regular" />
+                <On Platform="iOS" Value="_PDMS_Saleem_QuranFont" />
+            </OnPlatform>
+            
+            <Style TargetType="Label"  x:Key="FontAwesomeLabel" x:Name="FontAwesomeLabel">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" Android="PDMS_Saleem_QuranFont.ttf#Regular" iOS="PDMS_Saleem_QuranFont"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <OnPlatform x:Key="FontNamedSize" x:TypeArguments="x:String"
+                    iOS="Small"
+                        Android="Micro" />
+            <!--<Style TargetType="Label" >
+                <Setter Property="FontFamily" Value="{StaticResource QuranFont}"/>
+            </Style>-->
+
+            <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="#000000"/>
+        <Setter Property="BarTextColor" Value="#ffffff"/>
+      </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</prism:PrismApplication>

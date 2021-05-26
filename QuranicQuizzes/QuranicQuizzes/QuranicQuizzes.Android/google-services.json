@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "764464876457",
+    "firebase_url": "https://quranicquizzes-834b1.firebaseio.com",
+    "project_id": "quranicquizzes-834b1",
+    "storage_bucket": "quranicquizzes-834b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764464876457:android:06d960a66ce79f37fa92b8",
+        "android_client_info": {
+          "package_name": "com.QuranicQuizzes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764464876457-va4p8g5fpqmfq9our65amj19cq66l4ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAruNaIC9YZZY7dp7pOKPLlZjtBMWEgodk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764464876457-va4p8g5fpqmfq9our65amj19cq66l4ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,165 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/imac/Development/Live Project/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes.csproj": {}
+  },
+  "projects": {
+    "/Users/imac/Development/Live Project/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/imac/Development/Live Project/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes.csproj",
+        "projectName": "QuranicQuizzes",
+        "projectPath": "/Users/imac/Development/Live Project/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes.csproj",
+        "packagesPath": "/Users/imac/.nuget/packages/",
+        "outputPath": "/Users/imac/Development/Live Project/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/QuranicQuizzes/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder",
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/imac/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "/Users/imac/Downloads/Telerik_UI_for_Xamarin_2020_3_1106_1_Dev_NuGet_Separate_Packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/stashstock/CannaScanner-Standalone/_packaging/CannaScannerPackages/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Acr.UserDialogs": {
+              "target": "Package",
+              "version": "[7.0.35, )"
+            },
+            "CarouselView.FormsPlugin": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
+            "DLToolkit.Forms.Controls.FlowListView": {
+              "target": "Package",
+              "version": "[2.0.11, )"
+            },
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[2.6.4, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[2.6.4, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Plugin.FirebasePushNotification": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Plugin.InAppBilling": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Plugin.MediaManager": {
+              "target": "Package",
+              "version": "[0.9.6, )"
+            },
+            "Plugin.Permissions": {
+              "target": "Package",
+              "version": "[3.0.0.12, )"
+            },
+            "Plugin.StoreReview": {
+              "target": "Package",
+              "version": "[2.0.0.5, )"
+            },
+            "Prism.Unity.Forms": {
+              "target": "Package",
+              "version": "[7.2.0.1422, )"
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[1.2.0.223, )"
+            },
+            "XF.Material": {
+              "target": "Package",
+              "version": "[1.5.8, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Xam.Plugin.HtmlLabel": {
+              "target": "Package",
+              "version": "[3.0.2.2, )"
+            },
+            "Xam.Plugin.LatestVersion": {
+              "target": "Package",
+              "version": "[1.1.2, )"
+            },
+            "Xam.Plugin.SimpleAudioPlayer": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Xam.Plugins.Settings": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.FFImageLoading.Svg.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.FFImageLoading.Transformations": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[4.4.0.991477, )"
+            },
+            "Xamarin.Forms.Extended.InfiniteScrolling": {
+              "target": "Package",
+              "version": "[1.0.0-preview2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

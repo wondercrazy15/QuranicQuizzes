@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+    xmlns:custom="clr-namespace:QuranicQuizzes.CustomControls"
+    xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="#3E4349"
+    NavigationPage.HasBackButton="False"
+    xmlns:effects="clr-namespace:QuranicQuizzes.CustomControls"
+    x:Class="QuranicQuizzes.Views.QuizzesQuestionPage">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="FontType">
+               
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" Android="PDMS_Saleem_QuranFont.ttf#Regular"
+                                    iOS="PDMS_Saleem_QuranFont"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout BackgroundColor="White" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" x:Name="QuestionVisibleLayout" Margin="{OnPlatform Android='5,10,5,1',iOS='5,1,5,1'}"  Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Fill" Spacing="0">
+                        <Label Text="{Binding TotalQuestionCount}" Margin="0,0,5,0" Style="{StaticResource TextDefaultStyle}"
+                               VerticalOptions="Center" VerticalTextAlignment="Center"
+                               HorizontalOptions="Start" />
+                        <custom:CustomProgressBar  Margin="{OnPlatform Android='0,0,0,0',iOS='0,20,0,0'}" ProgressColor="#17a2b8" HorizontalOptions="FillAndExpand" x:Name="progressBar" Progress="1" />
+                        <material:MaterialIconButton BackgroundColor="Transparent" TintColor="Gray" Image="close.png" Command="{Binding CloseTap}">
+                            <!--<material:MaterialIcon.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CloseTap}"/>
+                        </material:MaterialIcon.GestureRecognizers>-->
+                        </material:MaterialIconButton>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="10,5,10,10" Spacing="0" VerticalOptions="StartAndExpand">
+                        <material:MaterialIconButton x:Name="Quizzesinfo" Image="Quizzesinfo.png" BackgroundColor="Transparent"
+                                                     HorizontalOptions="StartAndExpand" IsVisible="{Binding IsShowHint}" Command="{Binding IsShowHintCommand}" />
+                        <material:MaterialIcon IsVisible="{Binding IsSoundURL}" HorizontalOptions="EndAndExpand" TintColor="#70ad47"
+                                               Source="speaker.png">
+                            <material:MaterialIcon.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SoundTap}" />
+                            </material:MaterialIcon.GestureRecognizers>
+                        </material:MaterialIcon>
+                    </StackLayout>
+                    <htmlLabel:HtmlLabel Margin="0,5,0,5" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" TextColor="#2d137d"
+                                         FontSize="{ OnIdiom Phone=17,Tablet=30}" FontFamily="{StaticResource QuranFontBold}" HorizontalOptions="FillAndExpand" Text="{Binding QuestionText}" />
+                    <Label Padding="0,-20,0,0" IsVisible="{Binding IsImageText}" FontSize="{ OnIdiom Phone=70,Tablet=80}"
+                           VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" TextColor="#2d137d" FontFamily="{StaticResource ArabicFont}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Text="{Binding ImageText}" />
+                    <StackLayout VerticalOptions="Center" IsVisible="{Binding IsImageURL}">
+                        <ffimageloading:CachedImage LoadingDelay="0" Margin="10" x:Name="ImageData" IsEnabled="{Binding IsImageURL}"
+                                                    CacheDuration="30" RetryCount="3" Source="{Binding ImageURL}" HeightRequest="{OnIdiom Phone=180,Tablet=220}"
+                                                    WidthRequest="{OnIdiom Phone=200,Tablet=250}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                    BackgroundColor="Transparent" Aspect="Fill">
+                        </ffimageloading:CachedImage>
+                    </StackLayout>
+                    <StackLayout   Spacing="0" Margin="0,0,0,1" x:Name="QuizzesAnsList"
+                                   BindableLayout.ItemsSource="{Binding QuizzesQuestionAnswersList}"
+                                   VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame  VerticalOptions="Fill" Padding="5" BackgroundColor="{Binding BorderColor}" Margin="0,2,0,0" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="2">
+                                    <StackLayout VerticalOptions="FillAndExpand" HeightRequest="{Binding Heights}" BackgroundColor="{Binding BackgroundColor}" HorizontalOptions="FillAndExpand">
+                                        <Label  Text="{Binding AnswerText}" FontFamily="{StaticResource QuranFont}"
+                                                FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"
+                                                VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="White">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsArabic}" Value="true">
+                                                    <Setter Property="FontFamily" Value="{StaticResource ArabicFont}" />
+                                                    <Setter Property="FontSize" Value="{OnIdiom Tablet='35',Phone='25'}" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsArabic}" Value="false">
+                                                    <Setter Property="FontSize" Value="{OnIdiom Tablet='30',Phone='16'}" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Path=BindingContext.SelectedQuizeAnswer, Source={x:Reference QuizzesAnsList}}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding IsQuestionAnswerInfoVisible}" x:Name="QuestionAnswerInfoVisibleLayout" BackgroundColor="{Binding ResultBackground}" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,10">
+                        <material:MaterialLabel Margin="2" FontAttributes="Bold" TextColor="White" Text="{Binding Result}"
+                                                FontSize="{OnIdiom Tablet='70',Phone='50'}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                                FontFamily="{StaticResource QuranFontBold}" />
+                        <!--<ffimageloading:CachedImage 
+                                                                    WidthRequest="{OnPlatform Android=60,iOS=60}"
+                                                                   HeightRequest="{OnPlatform Android=60,iOS=60}"
+                    Source="{Binding ResultImg}" HorizontalOptions="CenterAndExpand"
+                                                                   VerticalOptions="CenterAndExpand"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <ffTransformations:CircleTransformation />
+                                                </ffimageloading:CachedImage.Transformations>
+                                            </ffimageloading:CachedImage>-->
+                        <material:MaterialIcon HeightRequest="70" Margin="2" BackgroundColor="Transparent" TintColor="White" Source="{Binding ResultImg}" HorizontalOptions="CenterAndExpand"></material:MaterialIcon>
+                        <material:MaterialLabel Margin="2" TextColor="White" FontAttributes="Bold" Text="{Binding point}" FontSize="35" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFontBold}" />
+                        <StackLayout Orientation="Horizontal" Spacing="0" Margin="2">
+                            <material:MaterialLabel VerticalOptions="CenterAndExpand" TextColor="White" Text="Correct Answer"
+                                                    TextDecorations="Underline" FontSize="{OnIdiom Tablet='35',Phone='25'}" VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFont}" />
+                            <material:MaterialIconButton VerticalOptions="CenterAndExpand" Margin="5,0,0,0" BackgroundColor="White" Image="Quizzesinfo" IsVisible="{Binding IsNotes}" Command="{Binding InfoClick}" HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <Label Text="{Binding LblQuestionAnswer}" Margin="2" TextColor="White" FontSize="25" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFont}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsArabic}" Value="true">
+                                    <Setter Property="FontFamily" Value="{StaticResource ArabicFont}" />
+                                    <Setter Property="FontSize" Value="{OnIdiom Tablet='45',Phone='35'}" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsArabic}" Value="false">
+                                    <Setter Property="FontSize" Value="{OnIdiom Tablet='35',Phone='25'}" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Frame HasShadow="False" CornerRadius="5" Padding="1" Margin="2" IsVisible="{Binding IsImageText}" HorizontalOptions="CenterAndExpand">
+                            <Label   TextColor="#2d137d" BackgroundColor="Transparent" IsVisible="{Binding IsImageText}"
+                                     FontSize="{OnIdiom Tablet='70',Phone='50'}" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" FontFamily="{StaticResource ArabicFont}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding ImageText}">
+                                <Label.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android, UWP">5,5,5,0</On>
+                                        <On Platform="iOS">5,10,5,0</On>
+                                    </OnPlatform>
+                                </Label.Padding>
+                            </Label>
+                        </Frame>
+                        <Label Margin="2" Text="{Binding LblTapContinue}" FontFamily="{StaticResource QuranFont}"
+                               FontAttributes="Bold" HorizontalTextAlignment="Center" Style="{StaticResource TextMediumStyle}"
+                               VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand" TextColor="White">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickContinue}" CommandParameter="{Binding .}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClickContinue}" CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

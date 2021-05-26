@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="QuranicQuizzes.Views.DashboardDetailsPage"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="True"
+    NavigationPage.HasBackButton="True">
+      <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+            <!--<material:MaterialIcon HorizontalOptions="CenterAndExpand" Margin="0,0,2,0" Source="user_groups_icon.png" TintColor="White"   BackgroundColor="Transparent" />-->
+            <Label Text="{Binding Title}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIcon  Margin="0,0,2,0"   BackgroundColor="Transparent" WidthRequest="50"  />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Padding="5" VerticalOptions="FillAndExpand">
+            
+             <ListView x:Name="DashboardDetailsList" SelectionMode="None" HasUnevenRows="True" ItemsSource="{Binding DetailsList}"
+                       BackgroundColor="Transparent" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+                 <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                             <material:MaterialCard Elevation="2" HasShadow="False" Margin="2" CornerRadius="2"
+                                                    BackgroundColor="#ffffff" Padding="0">
+                                <Grid BackgroundColor="Transparent" Padding="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="62*" />
+                                    <ColumnDefinition Width="19*" />
+                                    <ColumnDefinition Width="19*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                               <StackLayout Grid.Column="0" HorizontalOptions="Center" Orientation="Vertical" >
+
+                                        <htmlLabel:HtmlLabel VerticalOptions="CenterAndExpand"  Text="{Binding QuestionText}" FontFamily="{StaticResource QuranFontBold}" FontSize="Small" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                                        <Label  Padding="{OnPlatform Android='0,-20,0,0',iOS='0,5,0,0'}"
+                                     IsVisible="{Binding IsImageText}"  FontSize="40" VerticalOptions="FillAndExpand"
+                                      VerticalTextAlignment="Center"
+                                     FontAttributes="Bold" TextColor="#2d137d"  FontFamily="{StaticResource ArabicFont}"
+                                      HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Text="{Binding ImageText}" />
+
+                                        <StackLayout VerticalOptions="Center"   IsVisible="{Binding IsImage}">
+                                            <ffimageloading:CachedImage LoadingDelay="0" Margin="10" x:Name="ImageData"  IsVisible="{Binding IsImage}"
+                                                        Source="{Binding FinalImageURL}" HeightRequest="100" WidthRequest="100"
+                                                                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                            </ffimageloading:CachedImage>
+                                        </StackLayout>
+                               </StackLayout>
+                                <material:MaterialIconButton WidthRequest="30" HeightRequest="30" TintColor="{Binding TintColor}"  Grid.Column="1" HorizontalOptions="Center" Image="{Binding FinalResultIcon}" BackgroundColor="Transparent" />
+                                <Label Grid.Column="2" TextColor="Black" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" Text="{Binding Points}" FontFamily="{StaticResource QuranFont}" FontSize="Small"/>
+
+                               
+                                  </Grid>
+                             </material:MaterialCard>   
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Header>
+                    <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                           <ColumnDefinition Width="62*" />
+                           <ColumnDefinition Width="19*" />
+                           <ColumnDefinition Width="19*" />
+                         </Grid.ColumnDefinitions>
+
+                        <Label Text="Question" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}"
+                               FontSize="{OnPlatform Android='Subtitle',iOS='Default'}" TextColor="Black"/>
+
+                        <Label Text="Correct" Grid.Column="1" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}"
+                               FontSize="{OnPlatform Android='Subtitle',iOS='Default'}" TextColor="Black"/>
+
+                        <Label Text="Points" Grid.Column="2" HorizontalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}"
+                               FontSize="{OnPlatform Android='Subtitle',iOS='Default'}" TextColor="Black"/>
+
+                        <BoxView
+                            Grid.Row="1"
+                             Grid.ColumnSpan="3"
+                             HeightRequest="1"
+                             BackgroundColor="LightGray"/>
+                    </Grid>
+                      
+                </ListView.Header>
+             </ListView>
+         </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

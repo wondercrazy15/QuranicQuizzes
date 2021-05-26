@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranicQuizzes.Views.QuizzesBySubCategoriesPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+        prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:custom="clr-namespace:QuranicQuizzes.CustomControls"
+             >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="Categories" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}"  />
+            <material:MaterialIcon  Margin="0,0,0,0"   BackgroundColor="Transparent" WidthRequest="50"  />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="splash" Aspect="AspectFill"></Image>
+            </Grid>
+            <Grid >
+        <StackLayout Spacing="0">
+            <StackLayout Spacing="0"  Orientation="Vertical" IsVisible="{Binding IsVisibleSearch}" BackgroundColor="#3E4349" Padding="0,0,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" >
+
+                <Frame Margin="10,5,10,5" CornerRadius="2"  BackgroundColor="#DCDCDC" Padding="0">
+                    <StackLayout Orientation="Horizontal" >
+
+                        <Entry Margin="10,0,0,0" Text="{Binding SearchData}" BackgroundColor="Transparent" Placeholder="Search here.." FontFamily="{StaticResource QuranFont}" HorizontalOptions="FillAndExpand" />
+                        <material:MaterialIconButton PressedBackgroundColor="Transparent" BackgroundColor="Transparent" Margin="0,0,10,0" Command="{Binding iconCloseTap}" Image="close.png" TintColor="Black" />
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            <ListView x:Name="SubCategoriesList"
+                      VerticalScrollBarVisibility="Never"
+                      ios:ListView.RowAnimationsEnabled="false"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      SelectionMode="None"
+                      BackgroundColor="Transparent"
+                      HasUnevenRows="true"
+                      Margin="0,5,0,0"
+                      ItemsSource="{Binding LvSubCategories}"
+                      SeparatorVisibility="None" >
+                <ListView.Behaviors>
+                    <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                x:Name="ListViewselection"
+                                Padding="0,3,0,0"
+                                         Orientation="Vertical">
+                                <material:MaterialCard CornerRadius="0"
+                                                       Elevation="1"
+                                                       VerticalOptions="Fill"
+                                                       BackgroundColor="#FEFEFE"
+                                                       Padding="5"
+                                                          
+                                                       HorizontalOptions="FillAndExpand">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                                            <ffimageloading:CachedImage x:Name="userprofilePic" LoadingDelay="0"
+                                                                            Margin="3,0,0,0" WidthRequest="{OnIdiom Phone=50,Tablet=70}"
+                                                                   HeightRequest="{OnIdiom Phone=50,Tablet=70}" Source="{Binding ImageURL}"
+                                                                   HorizontalOptions="Start" VerticalOptions="Center"
+                                                                        BackgroundColor="Transparent" Aspect="Fill" >
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <ffTransformations:CircleTransformation />
+                                                </ffimageloading:CachedImage.Transformations>
+
+                                            </ffimageloading:CachedImage>
+
+                                                <Label Text="{Binding SubCategoryName}" FontFamily="{StaticResource QuranFontBold}" VerticalOptions="CenterAndExpand" FontAttributes="Bold" Margin="5" TextColor="Black" FontSize="Body"/>
+
+                                        </StackLayout>
+  
+                                    </StackLayout>
+
+                                </material:MaterialCard>
+                                 <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                Command="{Binding Path=BindingContext.SubcategoriesTap, Source={x:Reference SubCategoriesList}}" CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid IsVisible="{Binding IsBusy}">
+                        <Grid.Triggers>
+                            <Trigger TargetType="Grid"
+                                 Property="IsVisible"
+                                 Value="False">
+                                <Setter Property="HeightRequest"
+                                    Value="20"/>
+                            </Trigger>
+                        </Grid.Triggers>
+                        <Label Text="Loading..."
+                           TextColor="Green"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Style="{StaticResource TextMediumStyle}"/>
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+
+</Grid></Grid>
+    </ContentPage.Content>
+</ContentPage>

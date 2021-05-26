@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True"
+             BackgroundImageSource="splash.png"
+             Title="Learn Tab"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="QuranicQuizzes.Views.MainLearnPage">
+    <NavigationPage.TitleView >
+       
+        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Orientation="Horizontal" >
+             <Label Text="Learn Tab" TextColor="White" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center" IsVisible="{Binding IsVisibleCategories}"
+                    FontFamily="{StaticResource QuranFontBold}" Style="{StaticResource TextMediumStyle}" >
+            <!--<Label.TextColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="White" />
+                    <On Platform="iOS" Value="Black" />
+                </OnPlatform>
+            </Label.TextColor>-->
+        </Label>
+        
+            <material:MaterialIconButton PressedBackgroundColor="Transparent" Margin="0,0,15,0"
+                                         BackgroundColor="Transparent" VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="End">
+                <!--<material:MaterialIconButton.TintColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="White" />
+                    <On Platform="iOS" Value="Black" />
+                </OnPlatform>
+                    </material:MaterialIconButton.TintColor>-->
+            </material:MaterialIconButton>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" Padding="5" >
+                <Grid VerticalOptions="FillAndExpand" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0"  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="50"  Padding="5" >
+                                            
+                                            <StackLayout Orientation="Vertical" Spacing="0"  HorizontalOptions="FillAndExpand" >
+                                                <material:MaterialButton Margin="10" Style="{StaticResource MainButtonStyle}"
+                                                                         FontFamily="{StaticResource QuranFontBold}"
+                                         FontAttributes="Bold" AllCaps="False" x:Name="btnRegister"
+                                         Elevation="4, 8" CommandParameter="{Binding Quizzescategory}"
+                                     HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="#3b5998"
+                                     Text="Study" TextColor="White"  Command="{ Binding StudyCommmand}" />
+                                                <Image Margin="5" Source="logo" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                                
+
+                                            </StackLayout>
+                    </Frame>
+                   <Frame Grid.Row="1"  BorderColor="#A9AFB6" HasShadow="False" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        CornerRadius="50"  Padding="5" >
+                                            
+                                            <StackLayout Orientation="Vertical" Spacing="0"  HorizontalOptions="FillAndExpand" >
+                                                <material:MaterialButton  Style="{StaticResource MainButtonStyle}" FontFamily="{StaticResource QuranFontBold}" FontAttributes="Bold" AllCaps="False"
+                                         Margin="10" x:Name="btnLogin" Elevation="4, 8"
+                                     HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="{StaticResource MainColor}"
+                                     Text="Flash cards" TextColor="White"  Command="{ Binding FlashCardCommmand}" />
+                                                <Image Margin="5" Source="logo" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                            </StackLayout>
+                    </Frame>
+
+                </Grid>
+                    
+                    
+
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

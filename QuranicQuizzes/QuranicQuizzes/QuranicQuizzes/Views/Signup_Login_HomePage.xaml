@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="QuranicQuizzes.Views.Signup_Login_HomePage"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundImageSource="splash.png"    
+    NavigationPage.HasNavigationBar="False">
+<ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" Padding="5" Spacing="0">
+            <cv:CarouselViewControl Margin="0,10,0,10" x:Name="cvBanners" ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="LightGray"
+                                    CurrentPageIndicatorTintColor="Red" Orientation="Horizontal" InterPageSpacing="0" 
+                                    HeightRequest="{OnIdiom Phone=200,Tablet=350}" ItemsSource="{Binding Banners}" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="Start" AnimateTransition="True">
+            <cv:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Image Source="{Binding Image}" Aspect="Fill" HorizontalOptions="FillAndExpand"/>
+                      
+                        <!--<StackLayout Margin="30,20,0,0" Spacing="15" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                            <Label  TextColor="White" FontSize="12"/>
+                            <BoxView BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="1" WidthRequest="50"/>
+                            <StackLayout>
+                                <Label Text="{Binding Message}" TextColor="White" FontSize="35" />
+                                <Label Text="{Binding Caption}" TextColor="White" FontSize="12" />
+                            </StackLayout>
+                        </StackLayout>-->
+                    </Grid>
+                </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+        </cv:CarouselViewControl>
+            <StackLayout  Margin="25,30,25,10">
+                <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontFamily="{StaticResource QuranFontBold}"
+                                        FontAttributes="Bold" TextColor="White" x:Name="lblRegister" Text="New Here?" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                <material:MaterialButton Style="{StaticResource MainButtonStyleRound}" FontFamily="{StaticResource QuranFontBold}"
+                                         FontAttributes="Bold" AllCaps="False"  Margin="0,5,0,0" x:Name="btnRegister"
+                                         Elevation="4, 8" 
+                                     HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="#3b5998"
+                                     Text="Create a free account" TextColor="White"  Command="{ Binding RegisterCommmand}" />
+                <material:MaterialLabel Style="{StaticResource TextBodyStyle}" FontAttributes="Bold" FontFamily="{StaticResource QuranFontBold}" TextColor="White" Margin="0,5,0,0"
+                                        x:Name="lblLogin" Text="Already have an account?"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+
+                <material:MaterialButton  Style="{StaticResource MainButtonStyleRound}" FontFamily="{StaticResource QuranFontBold}" FontAttributes="Bold" AllCaps="False"
+                                         Margin="0,5,0,0" x:Name="btnLogin" Elevation="4, 8"
+                                     HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="{StaticResource MainColor}"
+                                     Text="Log in" TextColor="White"  Command="{ Binding LoginCommmand}" />
+             
+            </StackLayout>
+             
+        </StackLayout>
+            </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

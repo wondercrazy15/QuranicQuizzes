@@ -1,0 +1,22 @@
+"https://quranicquizzes.com/api/EndQuiz/55249?ak=9yT6MRqbdBYbEvQQ7tweG"
+
+
+test account
+Username: App.11@Quranicquizzes.com
+Pass: V1kram
+
+Teacher account:  teacher.1@quranicquizzes.com
+Pass : V1kram
+
+app.11 account is a student account now
+app.2@quranicquizzes.com
+app.3@quranicquizzes.com
+app.4@quranicquizzes.com
+
+
+KeyStore Password: QuranicQuizzes
+
+App center
+https://appcenter.ms/orgs/Quranic-Quizzes/applications
+id : imcoder1805@hotmail.com
+pass: Coder@1234

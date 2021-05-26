@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuranicQuizzes.Views.AssignToUserPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" 
+        prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:custom="clr-namespace:QuranicQuizzes.CustomControls">
+    <NavigationPage.TitleView >
+       
+        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Orientation="Horizontal" >
+             <Label Text="{Binding AssignmentTitle}" TextColor="White" HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  FontFamily="{StaticResource QuranFontBold}"
+                    Style="{StaticResource TextMediumStyle}"  >
+           
+        </Label>
+        
+            <material:MaterialIconButton PressedBackgroundColor="Transparent" Command="{Binding iconSearchTap}" TintColor="White"  BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" Image="search.png" HorizontalOptions="End">
+                <!--<material:MaterialIconButton.TintColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="Android" Value="White" />
+                    <On Platform="iOS" Value="Black" />
+                </OnPlatform>
+                    </material:MaterialIconButton.TintColor>-->
+            </material:MaterialIconButton>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0">
+            <StackLayout Spacing="0"  Orientation="Vertical" IsVisible="{Binding IsVisibleSearch}" BackgroundColor="#3E4349" Padding="0,0,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" >
+
+                <Frame HasShadow="False" Margin="10,5,10,5" CornerRadius="2"  BackgroundColor="#DCDCDC" Padding="0">
+                    <StackLayout Orientation="Horizontal" >
+
+                        <Entry Margin="10,0,0,0" Text="{Binding SearchData}" BackgroundColor="Transparent" Placeholder="Search here.." FontFamily="{StaticResource QuranFont}" HorizontalOptions="FillAndExpand" />
+                        <material:MaterialIconButton PressedBackgroundColor="Transparent" BackgroundColor="Transparent" Margin="0,0,10,0" Command="{Binding iconCloseTap}" Image="close.png" TintColor="Black" />
+                    </StackLayout>
+                </Frame>
+                
+            </StackLayout>
+            <material:MaterialButton IsVisible="{Binding IsAssignToAll}" CornerRadius="5" Command="{Binding AssignToAll}" HeightRequest="50" HorizontalOptions="EndAndExpand" BackgroundColor="#868e96" FontFamily="{StaticResource QuranFontBold}" AllCaps="False" Margin="0,0,10,0" Text=" Assign to All " />
+
+             <material:MaterialLabel IsVisible="{Binding IsAssigned}" FontSize="Body" HorizontalOptions="End" TextColor="#868e96" FontFamily="{StaticResource QuranFontBold}" Margin="5,5,15,5"  Text="All Assigned" />
+
+            <ListView x:Name="EntryList"
+                      ios:ListView.RowAnimationsEnabled="false"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      SelectionMode="None"
+                      BackgroundColor="Transparent"
+                      HasUnevenRows="true"
+                      Margin="15,1,15,0"
+                      ItemsSource="{Binding UserList}"
+                      SeparatorVisibility="None" >
+                <ListView.Behaviors>
+                    <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                x:Name="ListViewselection"
+                                
+                                         Orientation="Vertical">
+                                <material:MaterialCard CornerRadius="5"
+                                                       Elevation="1"
+                                                       VerticalOptions="Fill"
+                                                       BackgroundColor="#E8E8E8"
+                                                       Padding="5"
+                                                       Margin="5,1,5,1"     
+                                                       HorizontalOptions="FillAndExpand">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+                                         <Label Margin="5,0,0,0" Text="{Binding Name}" FontFamily="{StaticResource QuranFont}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="Black" FontSize="Body"/>
+                                               <material:MaterialIcon Margin="5" Source="{Binding IconImage}" TintColor="{Binding BackgroundColor}" HorizontalOptions="EndAndExpand"  />
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                      <material:MaterialCard.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.UserAssignTap, Source={x:Reference EntryList}}"
+                                                            CommandParameter="{Binding .}"/>
+                                                    </material:MaterialCard.GestureRecognizers>
+                                </material:MaterialCard>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+               <ListView.Footer>
+                    <Grid IsVisible="{Binding IsBusy}">
+                        <Grid.Triggers>
+                            <Trigger TargetType="Grid"
+                                 Property="IsVisible"
+                                 Value="False">
+                                <Setter Property="HeightRequest"
+                                    Value="20"/>
+                            </Trigger>
+                        </Grid.Triggers>
+                        <Label Text="Loading..."
+                           TextColor="Green"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

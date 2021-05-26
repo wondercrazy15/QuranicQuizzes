@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>764464876457-mhomerf1q3gnnsvjnkidssurq6c49l5s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.764464876457-mhomerf1q3gnnsvjnkidssurq6c49l5s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAdyD3ViXQMyq5V7xiU-0qr0Iq-UW2kPtw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>764464876457</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.QuranicQuizzes</string>
+	<key>PROJECT_ID</key>
+	<string>quranicquizzes-834b1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quranicquizzes-834b1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:764464876457:ios:5e9941d71c34e389fa92b8</string>
+	<key>DATABASE_URL</key>
+	<string>https://quranicquizzes-834b1.firebaseio.com</string>
+</dict>
+</plist>

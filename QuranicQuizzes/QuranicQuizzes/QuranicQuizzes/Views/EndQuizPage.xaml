@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+            xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+            prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling" xmlns:custom="clr-namespace:QuranicQuizzes.CustomControls" xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="QuranicQuizzes.Views.EndQuizPage">
+    <ContentPage.Content>
+            <StackLayout BackgroundColor="#00ced1" VerticalOptions="FillAndExpand" >
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <material:MaterialLabel Margin="2" TextColor="White" Text="Finished" FontSize="{OnIdiom Phone=50,Tablet=70}"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                                        FontFamily="{StaticResource QuranFont}" />
+
+                <material:MaterialLabel Margin="2" TextColor="White" Text="{Binding point}"
+                                        FontSize="{OnIdiom Phone=30,Tablet=40}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                        HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFont}" />
+               <material:MaterialLabel  Margin="2" TextColor="White" Text="Correctly answered" TextDecorations="Underline"
+                                        FontSize="{OnIdiom Phone=30,Tablet=40}" VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFont}" />
+               <Label Text="{Binding RightQuestions}" Margin="2"  TextColor="White" FontSize="{OnIdiom Phone=30,Tablet=40}" VerticalTextAlignment="Center"
+                      HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource QuranFont}" >
+                  
+               </Label>
+                <StackLayout Margin="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                     <material:MaterialIconButton Elevation="5" WidthRequest="{OnIdiom Phone=60,Tablet=80}" BackgroundColor="#00ACED"
+                                                  Image="twitter"
+                                                  Command="{Binding twitterClick}" ></material:MaterialIconButton>
+                    <material:MaterialIconButton Elevation="6" Image="facebook" WidthRequest="{OnIdiom Phone=60,Tablet=80}" BackgroundColor="#3B579D"
+                                                 Command="{Binding facebookClick}"></material:MaterialIconButton>
+                    <material:MaterialIconButton Elevation="6" Image="instagram" WidthRequest="{OnIdiom Phone=60,Tablet=80}" BackgroundColor="#007BB6"
+                                                 Command="{Binding instagramClick}"></material:MaterialIconButton>
+                </StackLayout>
+                <material:MaterialButton Elevation="2" CornerRadius="5" FontAttributes="Bold" Style="{StaticResource MainButtonStyle}"
+                                         Command="{Binding PlayAgainClickCommand}"
+                                         Padding="10"  BackgroundColor="#17a2b8" FontFamily="{StaticResource QuranFontBold}"
+                                         AllCaps="False" Margin="5,0,5,0" Text="Play Again" />
+            <material:MaterialButton Elevation="2" CornerRadius="5" Style="{StaticResource MainButtonStyle}" FontAttributes="Bold"
+                                     Command="{Binding CloseQuizze}" Padding="10"
+                                      BackgroundColor="#868e96" FontFamily="{StaticResource QuranFontBold}" AllCaps="False"
+                                     Margin="5,0,5,0" Text="Close" />
+ 
+               </StackLayout>
+            
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

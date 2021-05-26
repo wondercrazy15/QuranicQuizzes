@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  Title=""
+                  NavigationPage.HasNavigationBar="False"
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                  ios:Page.UseSafeArea="true"
+                   xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:customcontrols="clr-namespace:QuranicQuizzes.CustomControls"
+                   x:Class="QuranicQuizzes.Views.MainPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="#3E4349"
+                     Icon="hamburger.png">
+            <customcontrols:CustomScrollView x:Name="ScrollViewMenu" >
+            <Grid>
+            <!--<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="Home_screen_background.png" Aspect="AspectFill"></Image>
+            </Grid>-->
+            <Grid >
+                <StackLayout Orientation="Vertical" >
+                    <StackLayout BackgroundColor="White" Orientation="Horizontal" Spacing="0" Padding="5,0,0,5">
+                        
+                        <ffimageloading:CachedImage LoadingDelay="0" x:Name="userprofilePic" HeightRequest="{OnIdiom Phone=50,Tablet=60}" WidthRequest="{OnIdiom Phone=120,Tablet=130}"
+                                              HorizontalOptions="StartAndExpand"
+                                              Margin="5,0,0,0"
+                                              VerticalOptions="CenterAndExpand"
+                                              Aspect="Fill">
+                        </ffimageloading:CachedImage>
+                        <Label x:Name="userName"
+                               FontAttributes="Bold"
+                               Style="{StaticResource TextBodyStyle}"
+                               TextColor="#f37737"
+                               FontFamily="{StaticResource QuranFontBold}"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <!--<BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#CACACA"/>-->
+                <StackLayout BackgroundColor="#3E4349" x:Name="navigationDrawerList"
+                              VerticalOptions="Fill" >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="20,0,0,0"
+                                                 Spacing="20">
+                                    <material:MaterialIcon Source="{Binding Icon}" 
+                                               WidthRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               HeightRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                                    <Label Text="{Binding Title}"
+                                           FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                    CommandParameter="{Binding .}"
+                                                   />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                     <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding IsAssignment}">
+                        <StackLayout VerticalOptions="StartAndExpand" 
+                                                     Orientation="Horizontal"
+                                                     Padding="20,2,0,2"
+                                                     Spacing="20">
+                            <material:MaterialIcon Source="menu_assignment_icon.png" 
+                                                   WidthRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               HeightRequest="{OnIdiom Phone=30,Tablet=40}"
+                                                   TintColor="White"
+                                                   VerticalOptions="Center" />
+                            <StackLayout Spacing="0" Orientation="Horizontal">
+                                <Label Text="My Assignments"
+                                       FontFamily="{StaticResource QuranFontBold}"
+                                                    Style="{StaticResource TextMediumStyle}"
+                                                   VerticalOptions="Center"
+                                                   TextColor="White"/>
+                                <Frame HasShadow="False" WidthRequest="20" IsVisible="{Binding IsNewAssignment}" HorizontalOptions="Start" CornerRadius="{OnPlatform Android='25',iOS='10'}" BackgroundColor="Red" Padding="1" VerticalOptions="Start" >
+                                    <material:MaterialLabel Text="{Binding NewAssignmentCounts}" FontSize="{OnPlatform Android='Micro',iOS='Small'}"  TextColor="White" FontFamily="{StaticResource QuranFontBold}" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                                </Frame>
+                                
+                            </StackLayout>
+ 
+                                <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AllAssignment" CommandParameter="{Binding NewAssignmentList}"
+                                              />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                       
+                        
+                    </StackLayout>
+              
+
+                    <StackLayout BackgroundColor="#3E4349" Orientation="Vertical" VerticalOptions="EndAndExpand">
+                    <StackLayout x:Name="DonateStack" VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="20,2,0,2"
+                                                 Spacing="20">
+                        <material:MaterialIcon Source="donate_icon" 
+                                               WidthRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               HeightRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                        <Label Text="Donate" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DonateTap" 
+                                          />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="20,2,0,2"
+                                                 Spacing="20">
+                        <material:MaterialIcon Source="info_icon.png" 
+                                              WidthRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               HeightRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                        <Label Text="More Information" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MoreInfoClickCommand}" 
+                                          />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding IsMoreInfo}">
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                               
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="About Us" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AboutUsInfoClickCommand" 
+                                          />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                               
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="FAQ" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FAQClickCommand" 
+                                          />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                              
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="Privacy Policy" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PrivacyPolicyClickCommand"
+                                          />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                             
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="Terms" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TermClickCommand"
+                                          />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                              
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="Contact Us" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ContactUsTap"
+                                          />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="50,2,0,2"
+                                                 Spacing="20">
+                            <material:MaterialIcon Source="circle_icon.png" 
+                                              
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                            <Label Text="Rate Us" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FeedbackClickCommand"
+                                          />
+                            </StackLayout.GestureRecognizers>
+                            
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                                 Orientation="Horizontal"
+                                                 Padding="20,2,0,10"
+                                                 Spacing="20">
+                        <material:MaterialIcon Source="logout_icon" 
+                                               WidthRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               HeightRequest="{OnIdiom Phone=30,Tablet=40}"
+                                               TintColor="White"
+                                               VerticalOptions="Center" />
+                        <Label Text="Sign Out" FontFamily="{StaticResource QuranFontBold}"
+                                                Style="{StaticResource TextMediumStyle}"
+                                               VerticalOptions="Center"
+                                               TextColor="White" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignOutTap"
+                                          />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+                     <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" 
+                                        Android="0, 10, 0, 0" 
+                                        WinPhone="0, 0, 0, 0" 
+                                        iOS="0,30, 0, 10"/>
+                </StackLayout.Padding>
+            </StackLayout>
+            </Grid>
+        </Grid>
+            
+           </customcontrols:CustomScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

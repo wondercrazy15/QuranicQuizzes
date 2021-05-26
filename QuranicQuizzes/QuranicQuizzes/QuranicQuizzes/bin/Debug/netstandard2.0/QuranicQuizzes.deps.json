@@ -1,0 +1,731 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "QuranicQuizzes/1.0.0": {
+        "dependencies": {
+          "Acr.UserDialogs": "7.0.35",
+          "CarouselView.FormsPlugin": "5.2.0",
+          "DLToolkit.Forms.Controls.FlowListView": "2.0.11",
+          "Microsoft.AppCenter.Analytics": "2.6.4",
+          "Microsoft.AppCenter.Crashes": "2.6.4",
+          "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "12.0.3",
+          "Plugin.FirebasePushNotification": "3.1.6",
+          "Plugin.InAppBilling": "2.0.0",
+          "Plugin.MediaManager": "0.9.6",
+          "Plugin.Permissions": "3.0.0.12",
+          "Plugin.StoreReview": "2.0.0.5",
+          "Prism.Unity.Forms": "7.2.0.1422",
+          "Rg.Plugins.Popup": "1.2.0.223",
+          "XF.Material": "1.5.8",
+          "Xam.Plugin.Connectivity": "3.2.0",
+          "Xam.Plugin.HtmlLabel": "3.0.2.2",
+          "Xam.Plugin.LatestVersion": "1.1.2",
+          "Xam.Plugin.SimpleAudioPlayer": "1.4.0",
+          "Xam.Plugins.Settings": "3.1.1",
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.FFImageLoading.Svg.Forms": "2.4.11.982",
+          "Xamarin.FFImageLoading.Transformations": "2.4.11.982",
+          "Xamarin.Forms": "4.4.0.991477",
+          "Xamarin.Forms.Extended.InfiniteScrolling": "1.0.0-preview2"
+        },
+        "runtime": {
+          "QuranicQuizzes.dll": {}
+        }
+      },
+      "Acr.UserDialogs/7.0.35": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CarouselView.FormsPlugin/5.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/CarouselView.FormsPlugin.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Com.Airbnb.Xamarin.Forms.Lottie/3.0.3": {
+        "dependencies": {
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lottie.Forms.dll": {
+            "assemblyVersion": "3.0.3.0",
+            "fileVersion": "3.0.3.0"
+          }
+        }
+      },
+      "DLToolkit.Forms.Controls.FlowListView/2.0.11": {
+        "dependencies": {
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0/DLToolkit.Forms.Controls.FlowListView.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter/2.6.4": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "2.6.4.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Analytics/2.6.4": {
+        "dependencies": {
+          "Microsoft.AppCenter": "2.6.4"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "2.6.4.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Crashes/2.6.4": {
+        "dependencies": {
+          "Microsoft.AppCenter": "2.6.4"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "2.6.4.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "Plugin.FirebasePushNotification/3.1.6": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.FirebasePushNotification.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Plugin.InAppBilling/2.0.0": {
+        "runtime": {
+          "lib/netstandard1.0/Plugin.InAppBilling.Abstractions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/netstandard1.0/Plugin.InAppBilling.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "Plugin.MediaManager/0.9.6": {
+        "runtime": {
+          "lib/netstandard2.0/MediaManager.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          }
+        }
+      },
+      "Plugin.Permissions/3.0.0.12": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.Permissions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Plugin.StoreReview/2.0.0.5": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.StoreReview.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Prism.Core/7.2.0.1422": {
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {
+            "assemblyVersion": "7.2.0.1422",
+            "fileVersion": "7.2.0.1422"
+          }
+        }
+      },
+      "Prism.Forms/7.2.0.1422": {
+        "dependencies": {
+          "Prism.Core": "7.2.0.1422",
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Forms.dll": {
+            "assemblyVersion": "7.2.0.1422",
+            "fileVersion": "7.2.0.1422"
+          }
+        }
+      },
+      "Prism.Unity.Forms/7.2.0.1422": {
+        "dependencies": {
+          "Prism.Forms": "7.2.0.1422",
+          "Unity.Container": "5.11.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Prism.Unity.Forms.dll": {
+            "assemblyVersion": "7.2.0.1422",
+            "fileVersion": "7.2.0.1422"
+          }
+        }
+      },
+      "Rg.Plugins.Popup/1.2.0.223": {
+        "dependencies": {
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "1.2.0.223",
+            "fileVersion": "1.2.0.223"
+          }
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {
+            "assemblyVersion": "1.68.0.0",
+            "fileVersion": "1.68.0.0"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "assemblyVersion": "4.1.4.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "4.0.4.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.2": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.6.27129.4"
+          }
+        }
+      },
+      "Unity.Abstractions/5.11.1": {
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Unity.Abstractions.dll": {
+            "assemblyVersion": "5.11.1.0",
+            "fileVersion": "5.11.1.0"
+          }
+        }
+      },
+      "Unity.Container/5.11.1": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2",
+          "Unity.Abstractions": "5.11.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Unity.Container.dll": {
+            "assemblyVersion": "5.11.1.0",
+            "fileVersion": "5.11.1.0"
+          }
+        }
+      },
+      "Xam.Plugin.Connectivity/3.2.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Plugin.Connectivity.Abstractions.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          },
+          "lib/netstandard1.0/Plugin.Connectivity.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
+        }
+      },
+      "Xam.Plugin.HtmlLabel/3.0.2.2": {
+        "dependencies": {
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard2.0/HtmlLabel.Forms.Plugin.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Xam.Plugin.LatestVersion/1.1.2": {
+        "runtime": {
+          "lib/netstandard1.1/Plugin.LatestVersion.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard1.1/Plugin.LatestVersion.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xam.Plugin.SimpleAudioPlayer/1.4.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Plugin.SimpleAudioPlayer.Abstractions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard1.0/Plugin.SimpleAudioPlayer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xam.Plugins.Settings/3.1.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Plugin.Settings.Abstractions.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          },
+          "lib/netstandard1.0/Plugin.Settings.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          }
+        }
+      },
+      "Xamarin.Essentials/1.3.1": {
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Essentials.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading/2.4.11.982": {
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Platform.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          },
+          "lib/netstandard1.0/FFImageLoading.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982",
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Forms.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Svg/2.4.11.982": {
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "Xamarin.FFImageLoading": "2.4.11.982"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Svg.Platform.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Svg.Forms/2.4.11.982": {
+        "dependencies": {
+          "Xamarin.FFImageLoading.Forms": "2.4.11.982",
+          "Xamarin.FFImageLoading.Svg": "2.4.11.982"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Svg.Forms.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.FFImageLoading.Transformations/2.4.11.982": {
+        "dependencies": {
+          "Xamarin.FFImageLoading": "2.4.11.982"
+        },
+        "runtime": {
+          "lib/netstandard1.0/FFImageLoading.Transformations.dll": {
+            "assemblyVersion": "2.4.11.982",
+            "fileVersion": "2.4.11.982"
+          }
+        }
+      },
+      "Xamarin.Forms/4.4.0.991477": {
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "4.4.0.451"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "4.4.0.451"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "4.4.0.451"
+          }
+        }
+      },
+      "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3",
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Xamarin.Forms.Extended.InfiniteScrolling.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "XF.Material/1.5.8": {
+        "dependencies": {
+          "Com.Airbnb.Xamarin.Forms.Lottie": "3.0.3",
+          "Rg.Plugins.Popup": "1.2.0.223",
+          "Xamarin.Essentials": "1.3.1",
+          "Xamarin.Forms": "4.4.0.991477"
+        },
+        "runtime": {
+          "lib/netstandard2.0/XF.Material.dll": {
+            "assemblyVersion": "1.5.8.0",
+            "fileVersion": "1.5.8.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "QuranicQuizzes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Acr.UserDialogs/7.0.35": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z/b/LYtRW6logITXFhbN65MHzuiUyDsQ4gJmui178FmEgpB2TgOwUnXE1rGw/zrU3IE5zjMcUt07oRHILarDtA==",
+      "path": "acr.userdialogs/7.0.35",
+      "hashPath": "acr.userdialogs.7.0.35.nupkg.sha512"
+    },
+    "CarouselView.FormsPlugin/5.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h849lqz0wvmpyiXqCrN7EW+cCGqK5chcefCfS55CkoGMMQx238QWNknUTOl/CvIdZ4bgs0Oztb7kamYXDlQ5mQ==",
+      "path": "carouselview.formsplugin/5.2.0",
+      "hashPath": "carouselview.formsplugin.5.2.0.nupkg.sha512"
+    },
+    "Com.Airbnb.Xamarin.Forms.Lottie/3.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lf0Q4K5WiqjAJRH12BJUOCfoKIMiPWrpn7gMNBrX+6pwjSiSPE96EUakaag0Q2Xj5bn9vJ48lVXlRoVIjBAgCw==",
+      "path": "com.airbnb.xamarin.forms.lottie/3.0.3",
+      "hashPath": "com.airbnb.xamarin.forms.lottie.3.0.3.nupkg.sha512"
+    },
+    "DLToolkit.Forms.Controls.FlowListView/2.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n/TIbW3a7q/h5wA5vt8VfkN3eecJN8nMlPVu3NS7hvFODg0YqFHXDgbX1O/a9agcuk5Km6DZqJqpxpcYRS9sOQ==",
+      "path": "dltoolkit.forms.controls.flowlistview/2.0.11",
+      "hashPath": "dltoolkit.forms.controls.flowlistview.2.0.11.nupkg.sha512"
+    },
+    "Microsoft.AppCenter/2.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l8EmaA9jbwZzeq4BMmRpeYEf3/nYcw0TnZIQ/J73LT6VFJNGsqTWAFk4p9HH6tCvt8Zay/7H+wzpeOaMKRHA1A==",
+      "path": "microsoft.appcenter/2.6.4",
+      "hashPath": "microsoft.appcenter.2.6.4.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Analytics/2.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ekzf3xIKAX7+01E32+VpUvO32HzDaNIgVCzhsdkRvwIz0/gfPw3i5eZuhpL6RBXbEZL5qp6s09aW4PNDR/eFKA==",
+      "path": "microsoft.appcenter.analytics/2.6.4",
+      "hashPath": "microsoft.appcenter.analytics.2.6.4.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Crashes/2.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JngVtWPTWrvk237QJL3L1OHDWpxZhO44hgMHMyYOYEJmmvpzy8Qg/weyGCVdZ4Dsg0cyULeQyMhAtm4arX3nyw==",
+      "path": "microsoft.appcenter.crashes/2.6.4",
+      "hashPath": "microsoft.appcenter.crashes.2.6.4.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Plugin.FirebasePushNotification/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ogTiEngNc3l/BQhQEOStn3yeIZv9C+EUEN1oKjykN3gSpOT6jeclg0OQms1IrtAx6uEaqQdn0Nz7CC3D1nIbpA==",
+      "path": "plugin.firebasepushnotification/3.1.6",
+      "hashPath": "plugin.firebasepushnotification.3.1.6.nupkg.sha512"
+    },
+    "Plugin.InAppBilling/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NAuSohkp1QP4Z9WMGi1NhZBDomfKNgKgLCnoheRBJ3NRv+R4qi92LtO3hJWT2rcxl+HvPc/CgIhh4uD6MNNH0A==",
+      "path": "plugin.inappbilling/2.0.0",
+      "hashPath": "plugin.inappbilling.2.0.0.nupkg.sha512"
+    },
+    "Plugin.MediaManager/0.9.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rXB0qIa3YPPehx6tHk/ha2UEEEIPsLxi5ynIw0dYscO1lEd099jTsEFaNWYkjIm4+oSbwdjZBEZOm0xXzemq6A==",
+      "path": "plugin.mediamanager/0.9.6",
+      "hashPath": "plugin.mediamanager.0.9.6.nupkg.sha512"
+    },
+    "Plugin.Permissions/3.0.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VrYqI/ufk3bH6gTP1JJlLByjhS0CHu3riKmdozhX9/qXA9hlvLolmcqKJdyAqpzmrVC74m3ZtirUBIrBxvT1Lw==",
+      "path": "plugin.permissions/3.0.0.12",
+      "hashPath": "plugin.permissions.3.0.0.12.nupkg.sha512"
+    },
+    "Plugin.StoreReview/2.0.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5AIa8lkVd40JCMZe1wZaAUwrOCCfHUOW7/WkR2DHJE8+wELQ4wpleOAWEKz5PZUa2BLLyOTs3QkCH6Wf+Q0gFA==",
+      "path": "plugin.storereview/2.0.0.5",
+      "hashPath": "plugin.storereview.2.0.0.5.nupkg.sha512"
+    },
+    "Prism.Core/7.2.0.1422": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U6tZ4Iq+ELyK5PedRC6E20caZXXTmTYiw5evpv0M3WcfKgih9H5G5LDBlDl+65eC5Vb4lnOaUCAtckdEl2MRxA==",
+      "path": "prism.core/7.2.0.1422",
+      "hashPath": "prism.core.7.2.0.1422.nupkg.sha512"
+    },
+    "Prism.Forms/7.2.0.1422": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wrSjIoSp2o8W0JdHx1f5K7pM48lSA2yraQ+QRjl5PLRPs5FhzMwhOA2G1YoD0mhE1WzwzJoBBMnDfDaoFudmyQ==",
+      "path": "prism.forms/7.2.0.1422",
+      "hashPath": "prism.forms.7.2.0.1422.nupkg.sha512"
+    },
+    "Prism.Unity.Forms/7.2.0.1422": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BZBAgGsMuq1LTfu6fAJiF5vMmcd5Vw+AefQhA53nWdp+MAU/U5NOlftSI8IbvgCvzDaKcfbEoibZcQo86JM9Pw==",
+      "path": "prism.unity.forms/7.2.0.1422",
+      "hashPath": "prism.unity.forms.7.2.0.1422.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/1.2.0.223": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0ruzj7EedYRUhhsk327z7ymaHzf9E/n6Slg2ZJfOYqtZ14tX1dtWbyNRSmGEnWxLyN1qSq4Od4U6vYupHRpdtw==",
+      "path": "rg.plugins.popup/1.2.0.223",
+      "hashPath": "rg.plugins.popup.1.2.0.223.nupkg.sha512"
+    },
+    "SkiaSharp/1.68.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ptuxAKk9FiClNnAgWM8hVMCYw/B0hUJWZ8W6efnIAtJmJn/Xl4jvxxDF5WOqfQYCLVzxXw5gvBPVxvTLblFp0g==",
+      "path": "skiasharp/1.68.0",
+      "hashPath": "skiasharp.1.68.0.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BG/TNxDFv0svAzx8OiMXDlsHfGw623BZ8tCXw4YLhDFDvDhNUEV58jKYMGRnkbJNm7c3JNNJDiN7JBMzxRBR2w==",
+      "path": "system.threading.tasks.extensions/4.5.2",
+      "hashPath": "system.threading.tasks.extensions.4.5.2.nupkg.sha512"
+    },
+    "Unity.Abstractions/5.11.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R5qJ8KSN2mptSqCG4SHBBs2PcRvo113uu18cNCbcx1nkezYGZnYBNadLPtDODE5KFLQBqLdW9XlaalxU275Qgg==",
+      "path": "unity.abstractions/5.11.1",
+      "hashPath": "unity.abstractions.5.11.1.nupkg.sha512"
+    },
+    "Unity.Container/5.11.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pxeataMa9MB/ilLNcmy5OUrcvA2OnPMuMCTsw+zGgRPWx1oxkq6ap5bI+59htjAPe9awPDIU3YVk+yH0sfcOWQ==",
+      "path": "unity.container/5.11.1",
+      "hashPath": "unity.container.5.11.1.nupkg.sha512"
+    },
+    "Xam.Plugin.Connectivity/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZV45TaBTCJg7XQNEl3fPyyJcuMMhdDEQ6BCLc/5pMuTv38M226ER0WTu5sbmba8jlliDuzeRqkRFHwrGdWAgyg==",
+      "path": "xam.plugin.connectivity/3.2.0",
+      "hashPath": "xam.plugin.connectivity.3.2.0.nupkg.sha512"
+    },
+    "Xam.Plugin.HtmlLabel/3.0.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D/2zXt7pRrrdxzD0mKokusSYrUGaKVUP1ayPwgpEuAfpAz21shNEuoGrlzJnjANuT6T+mx4MiOco/XrGg9blyw==",
+      "path": "xam.plugin.htmllabel/3.0.2.2",
+      "hashPath": "xam.plugin.htmllabel.3.0.2.2.nupkg.sha512"
+    },
+    "Xam.Plugin.LatestVersion/1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4PvYObtTO7dh3s0goRck06TTvNwODTHyD7ocJVzWsedE53G5/tWZPBoVIFfwdPzjRYcK1XD1FA6c8SZHZ0XgiA==",
+      "path": "xam.plugin.latestversion/1.1.2",
+      "hashPath": "xam.plugin.latestversion.1.1.2.nupkg.sha512"
+    },
+    "Xam.Plugin.SimpleAudioPlayer/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QzfFZhmebaNBdQ0o2XcMLKKUsdxYpIZd50qOUuuls1zIj2ixudS3QoYOp9v27Fwa0CL1e9jEeAMgyBH7Qpimlw==",
+      "path": "xam.plugin.simpleaudioplayer/1.4.0",
+      "hashPath": "xam.plugin.simpleaudioplayer.1.4.0.nupkg.sha512"
+    },
+    "Xam.Plugins.Settings/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EQEYQJ64ZLqui5GWkLMavgqitHxwUHZHryTzUD1021UBuz1XwDSjPL45W0K4pPXjz9oKbg7YpRXKPR1luPr/5Q==",
+      "path": "xam.plugins.settings/3.1.1",
+      "hashPath": "xam.plugins.settings.3.1.1.nupkg.sha512"
+    },
+    "Xamarin.Essentials/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+51728AdZ/qtABGvcIaNXgEoL2jAtxAXLHS8PvGCP0pb6n7twBqYpfgkmwHYVgu+U99szgtL+Jot8L+OXorPcA==",
+      "path": "xamarin.essentials/1.3.1",
+      "hashPath": "xamarin.essentials.1.3.1.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M0sNIQgUPs+le6C2TS4RmZQAURnzaRVizRtnZIZ6/1//qGcEAtEXAGt/tBJz6I1zlP6XlMxq8io6b4sjFP5N9Q==",
+      "path": "xamarin.ffimageloading/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Forms/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7X4t3J1wJj0/0o8+vd91hzSYlrqEeMFC7Mj+0T8O+fcbRSHo/c+QbWscEQiT4AaKCwyO709xq+7aY2XXbK/H7g==",
+      "path": "xamarin.ffimageloading.forms/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Svg/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-acXrd+afkdQTXy24+/ZPY4W2z3/Yb3LyvQy/I+yeaV0X6bDWQ+niAUvxfyd3/ulbLvvPJzI2QT+bAcRXZo0Ztw==",
+      "path": "xamarin.ffimageloading.svg/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.svg.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Svg.Forms/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CniN9JB2/iKZivEbHIZaiueoxwxML0fmmiPlw2AnmjzJE8Dcth23Hl++BG7Y61FZMuEqkfsntGsrG9w6PsAt6w==",
+      "path": "xamarin.ffimageloading.svg.forms/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.svg.forms.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.FFImageLoading.Transformations/2.4.11.982": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cNG6zhiEBTENAGgIc9lY54YMJ0tg2dJ9+tj8tYgrOEQT8gxlj3OUzzNWZgaQWpcx28y5iIt/qM+Bd6jUwtAn1Q==",
+      "path": "xamarin.ffimageloading.transformations/2.4.11.982",
+      "hashPath": "xamarin.ffimageloading.transformations.2.4.11.982.nupkg.sha512"
+    },
+    "Xamarin.Forms/4.4.0.991477": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R0g6O208ugMZBfMbOh+gIJDX05CN6nMoGgkZVNIOU0hlOzKsM7oNJV7ntpSr4siRo43p61ycsY07w9JrgwonJQ==",
+      "path": "xamarin.forms/4.4.0.991477",
+      "hashPath": "xamarin.forms.4.4.0.991477.nupkg.sha512"
+    },
+    "Xamarin.Forms.Extended.InfiniteScrolling/1.0.0-preview2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q3MleY9BqDnVKUiXSvYETV++mg70CVXt7h2jqd3etdq5HHrRTYJdjZUdAEBYg5OozfABV7m5QtISU1XheV83XQ==",
+      "path": "xamarin.forms.extended.infinitescrolling/1.0.0-preview2",
+      "hashPath": "xamarin.forms.extended.infinitescrolling.1.0.0-preview2.nupkg.sha512"
+    },
+    "XF.Material/1.5.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S4C0vNIdgUqsJAg/menTmJdpMkXnZf5MgsTi7aRxgSuTzhLp8h7MM5ZEPGtHaIryYXv0/ddsWFmb8MZOy8IxBA==",
+      "path": "xf.material/1.5.8",
+      "hashPath": "xf.material.1.5.8.nupkg.sha512"
+    }
+  }
+}
